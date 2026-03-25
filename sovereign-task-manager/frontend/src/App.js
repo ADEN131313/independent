@@ -14,6 +14,7 @@ import Profile from './components/auth/Profile';
 import Layout from './components/layout/Layout';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import NotificationContainer from './components/common/NotificationContainer';
+import CreateTaskModal from './components/tasks/CreateTaskModal';
 
 // Styles
 import './App.css';
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <NotificationContainer />
+      <CreateTaskModal />
       <Routes>
         {/* Public routes */}
         <Route

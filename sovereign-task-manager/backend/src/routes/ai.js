@@ -10,9 +10,9 @@ const router = express.Router();
 router.use(apiLimiter);
 
 // Initialize OpenAI
-const openai = new OpenAI({
+const openai = process.env.OPENAI_API_KEY ? new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
-});
+}) : null;
 
 // @route   POST /api/ai/suggest-task
 // @desc    Generate AI task suggestions
