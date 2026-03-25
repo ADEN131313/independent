@@ -6,7 +6,7 @@ set -e  # Exit on any error
 
 # Configuration - ADJUST THESE FOR YOUR ENVIRONMENT
 DEPLOY_PLATFORM="${DEPLOY_PLATFORM:-github}"  # github, vercel, railway, render, heroku
-GITHUB_REPO="${GITHUB_REPO:-your-username/your-repo}"
+GITHUB_REPO="${GITHUB_REPO:-skinnyzebra14-sudo/independent}"
 GITHUB_TOKEN="${GITHUB_TOKEN:-your_github_token}"
 VERCEL_TOKEN="${VERCEL_TOKEN:-your_vercel_token}"
 RAILWAY_TOKEN="${RAILWAY_TOKEN:-your_railway_token}"

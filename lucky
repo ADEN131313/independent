@@ -943,7 +943,7 @@ const ROOT_FILES = [
 ## Quick Start
 
 \`\`\`bash
-git clone https://github.com/ADEN131313/sovereign-core.git
+git clone https://github.com/skinnyzebra14-sudo/sovereign-core.git
 cd sovereign-core
 pip install -e ".[all]"
 python -m agents.ghost.core
