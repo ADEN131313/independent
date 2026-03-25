@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: multi-agent-system
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py --demo
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9
+      - key: LOG_LEVEL
+        value: INFO
+      - key: MODEL_NAME
+        value: microsoft/DialoGPT-medium
+      - key: DEVICE
+        value: cpu
+    autoDeploy: true
+
+  - type: web
+    name: sovereign-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGODB_URI
+        fromSecret: mongodb_uri
+      - key: JWT_SECRET
+        fromSecret: jwt_secret
+    autoDeploy: true
+
+  - type: web
+    name: sovereign-frontend
+    runtime: node
+    buildCommand: |
+      npm install
+      npm run build
+    startCommand: npm start
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: sovereign-backend
+          property: host
+    autoDeploy: true

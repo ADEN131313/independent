@@ -1,0 +1,76 @@
+# GitHub Actions Workflow for Automated Deployment
+
+name: Deploy Applications
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install Python dependencies
+      run: |
+        cd multi_agent_system
+        pip install -r requirements.txt
+
+    - name: Test Multi-Agent System
+      run: |
+        cd multi_agent_system
+        python -c "from config import AGENT_CONFIGS; print(f'✅ {len(AGENT_CONFIGS)} agents configured')"
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Backend dependencies
+      run: |
+        cd sovereign-task-manager/backend
+        npm ci
+
+    - name: Install Frontend dependencies
+      run: |
+        cd sovereign-task-manager/frontend
+        npm ci
+
+    - name: Build Frontend
+      run: |
+        cd sovereign-task-manager/frontend
+        npm run build
+
+  deploy-frontend:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+    - name: Deploy to Vercel
+      run: |
+        cd sovereign-task-manager/frontend
+        npx vercel --prod --yes
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+  deploy-backend:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+    - name: Deploy to Railway
+      run: |
+        cd sovereign-task-manager/backend
+        npm install -g @railway/cli
+        railway login --token ${{ secrets.RAILWAY_TOKEN }}
+        railway deploy
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
