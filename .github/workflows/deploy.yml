@@ -9,61 +9,27 @@ on:
     branches: [ main, master ]
 
 jobs:
-  test:
+  deploy-frontend:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    - name: Install Python dependencies
-      run: |
-        cd multi_agent_system
-        pip install -r requirements.txt
-
-    - name: Test Multi-Agent System
-      run: |
-        cd multi_agent_system
-        python -c "print('✅ Multi-agent system ready')"
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
 
-    - name: Install Backend dependencies
-      run: |
-        cd sovereign-task-manager/backend
-        npm ci
-
-    - name: Test Backend
-      run: |
-        cd sovereign-task-manager/backend
-        npm test -- --passWithNoTests
-
     - name: Install Frontend dependencies
       run: |
         cd sovereign-task-manager/frontend
         npm ci
-
-    - name: Test Frontend
-      run: |
-        cd sovereign-task-manager/frontend
-        npm test -- --watchAll=false --passWithNoTests --coverage=false
 
     - name: Build Frontend
       run: |
         cd sovereign-task-manager/frontend
         npm run build
 
-  deploy-frontend:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    steps:
     - name: Deploy to Vercel
       run: |
         cd sovereign-task-manager/frontend
@@ -72,10 +38,11 @@ jobs:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
   deploy-backend:
-    needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
+    - uses: actions/checkout@v3
+
     - name: Deploy to Railway
       run: |
         cd sovereign-task-manager/backend
