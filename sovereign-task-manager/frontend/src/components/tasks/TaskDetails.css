@@ -1,0 +1,148 @@
+/* Task Details */
+.task-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.task-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.task-details-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  flex: 1;
+}
+
+.task-status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.task-details-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.task-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item span {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.priority-urgent {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+.priority-high {
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+.priority-medium {
+  color: var(--warning-color);
+  font-weight: 600;
+}
+
+.priority-low {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.task-description,
+.task-tags {
+  margin-bottom: 2rem;
+}
+
+.task-description h3,
+.task-tags h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.task-description p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tags-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.no-task-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.no-task-found h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.no-task-found p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .task-details-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-details-content {
+    padding: 1.5rem;
+  }
+
+  .task-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
