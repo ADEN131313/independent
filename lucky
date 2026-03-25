@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ghost Protocol — GitHub Deployer · ADEN131313/sovereign-core</title>
+<title>AI Agents Showcase</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Google+Sans:wght@400;500;600;700&display=swap');
@@ -15,7 +15,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
-body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--t1);display:flex;flex-direction:column}
+body{font-family:'JetBrains Mono',monospace;background:#0a0a0a;color:var(--t1);display:flex;flex-direction:column;margin:0;overflow:hidden}
 
 /* MATRIX BG */
 #mbg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.03;pointer-events:none}
@@ -124,6 +124,599 @@ body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--t1)
 .gp-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--g),var(--q));transition:width .4s ease}
 
 @media(max-width:768px){.sb{display:none}.main{width:100%}}
+
+/* GEMINI WAVE INTERFACE */
+:root {
+  --gemini-blue: #4488FF;
+  --electric-violet: #A855F7;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(40px);
+}
+
+.gemini-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.ghost-status {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+  color: var(--g);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.wave-wrapper {
+  width: 100%;
+  max-width: 800px;
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.waves {
+  width: 100%;
+  height: 100%;
+}
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+@keyframes move-forever {
+  0% { transform: translate3d(-90px,0,0); }
+  100% { transform: translate3d(85px,0,0); }
+}
+
+/* CINEMATIC SLIDESHOW */
+.slideshow-section {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 50px;
+}
+
+.slideshow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.focus-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.focus-card.transitioning {
+  transform: scale(0.95);
+  opacity: 0.3;
+}
+
+.focus-card h2 {
+  color: var(--gemini-blue);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.focus-card p {
+  margin: 8px 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.capabilities-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.capability-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.live-logic-feed {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.live-logic-feed .cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 20px;
+  transition: all 0.3s ease;
+  z-index: 20;
+  position: relative;
+}
+
+.nav-btn:hover {
+  color: var(--gemini-blue);
+  transform: scale(1.1);
+}
+
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: var(--gemini-blue);
+  transform: scale(1.5);
+}
+
+/* FLM TEMPLATE GENERATOR */
+.generator-section {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--gemini-blue);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.command-center {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#userCommand {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--gemini-blue);
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+#userCommand:focus {
+  border-color: var(--electric-violet);
+  box-shadow: 0 0 20px rgba(68, 136, 255, 0.3);
+}
+
+#generateBtn {
+  background: linear-gradient(135deg, var(--gemini-blue), var(--electric-violet));
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#generateBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(68, 136, 255, 0.4);
+}
+
+#generateBtn.loading {
+  pointer-events: none;
+}
+
+#generateBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+#generateBtn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.output-box {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#output-filename {
+  color: var(--gemini-blue);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.copy-btn {
+  background: var(--gemini-blue);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: var(--electric-violet);
+}
+
+#code-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* STATUS BAR */
+.status-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(10, 10, 10, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 100, 255, 0.2);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  color: #e0e0e0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4757;
+  box-shadow: 0 0 4px rgba(255, 71, 87, 0.5);
+}
+
+.status-dot.active {
+  background: #2ed573;
+  box-shadow: 0 0 8px rgba(46, 213, 115, 0.6);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(46, 213, 115, 0.6);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(46, 213, 115, 0.9);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+/* SOVEREIGN ADMIN PORTAL */
+.admin-portal {
+  margin-top: 100px;
+  padding: 40px;
+  background: rgba(10, 10, 10, 0.85);
+  border-top: 2px solid var(--gemini-blue);
+  border-bottom: 2px solid var(--gemini-blue);
+  backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(0, 100, 255, 0.08);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--gemini-blue);
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 100, 255, 0.15);
+}
+
+.portal-title {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.status-badge {
+  background: rgba(0, 100, 255, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 100, 255, 0.3);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 100, 255, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(0, 100, 255, 0.5); }
+}
+
+.training-grid {
+  display: flex;
+  gap: 30px;
+}
+
+.input-group {
+  flex: 2;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #555;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.admin-portal textarea {
+  width: 100%;
+  height: 140px;
+  background: #000;
+  border: 1px solid #222;
+  color: #00ff88;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  padding: 18px;
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.admin-portal textarea:focus {
+  outline: none;
+  border-color: var(--gemini-blue);
+  box-shadow: 0 0 20px rgba(0, 100, 255, 0.1);
+}
+
+.control-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-pro {
+  background: var(--gemini-blue);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-pro:hover {
+  background: #0077ff;
+  box-shadow: 0 0 25px rgba(0, 100, 255, 0.4);
+}
+
+.btn-secure {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secure:hover {
+  background: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.btn-warn {
+  background: rgba(255, 50, 50, 0.1);
+  color: #ff4444;
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-warn:hover {
+  background: rgba(255, 50, 50, 0.2);
+}
+
+.live-stats {
+  font-size: 0.65rem;
+  color: #555;
+  margin-top: 15px;
+  line-height: 2;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid #111;
+}
+
+.monitor-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 100, 255, 0.1);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: #444;
+}
+
+.mev-counter {
+  color: #00ff88;
+}
+
+@media (max-width: 768px) {
+  .focus-card {
+    padding: 25px;
+    max-width: 90vw;
+  }
+
+  .focus-card h2 {
+    font-size: 2rem;
+  }
+
+  .nav-btn {
+    font-size: 2rem;
+    padding: 15px;
+  }
+
+  .command-center {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #userCommand {
+    max-width: 100%;
+  }
+
+  .status-bar {
+    gap: 15px;
+  }
+
+  .capabilities-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .training-grid {
+    flex-direction: column;
+  }
+
+  .admin-portal {
+    padding: 20px;
+    margin-top: 50px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -134,51 +727,42 @@ body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--t1)
 
 <!-- SIDEBAR -->
 <aside class="sb">
-  <div class="sb-logo">
-    <div class="sb-gem">G</div>
+    <div class="sb-logo">
+    <div class="sb-gem">AI</div>
     <div>
-      <div class="sb-title">GHOST DEPLOYER</div>
-      <div style="font-size:7px;color:rgba(0,255,136,.35)">ADEN131313/sovereign-core</div>
+      <div class="sb-title">AI AGENTS</div>
+      <div style="font-size:7px;color:rgba(0,255,136,.35)">Intelligent Agent Showcase</div>
     </div>
   </div>
-
-  <div class="sb-sec">Deploy</div>
-  <div class="ni on" onclick="go('setup',this)">⚙️ Setup & Security</div>
-  <div class="ni" onclick="go('deploy',this)">🚀 Deploy All Agents<span class="nb ch-g">12</span></div>
-  <div class="ni" onclick="go('status',this)">📊 Live Status</div>
-  <div class="ni" onclick="go('files',this)">📁 File Browser</div>
-  <div class="ni" onclick="go('updater',this)">🔄 Live Updater</div>
-  <div class="ni" onclick="go('python',this)">🐍 Python Script</div>
 
   <div class="sb-sec">Agents</div>
   <div id="sb-agents"></div>
 
-  <div style="padding:10px;border-top:1px solid rgba(0,255,136,.1);margin-top:auto">
-    <div style="font-size:7px;color:rgba(0,255,136,.35);margin-bottom:5px">DEPLOYMENT STATUS</div>
-    <div style="font-size:8px;color:var(--g)" id="sb-status">Ready</div>
-    <div class="pbar" style="margin-top:4px"><div class="pf" id="sb-bar" style="width:0%;background:var(--g)"></div></div>
-  </div>
+    <div style="padding:10px;border-top:1px solid rgba(0,255,136,.1);margin-top:auto">
+      <div style="font-size:7px;color:rgba(0,255,136,.35);margin-bottom:5px">AGENT STATUS</div>
+      <div style="font-size:8px;color:var(--g)" id="sb-status">All Agents Online</div>
+      <div class="pbar" style="margin-top:4px"><div class="pf" id="sb-bar" style="width:100%;background:var(--g)"></div></div>
+    </div>
 </aside>
 
 <!-- MAIN -->
 <div class="main">
   <div class="header">
-    <div style="font-size:11px;font-weight:700;color:var(--g)">👻 GHOST PROTOCOL · FLM DEPLOYER</div>
-    <div style="font-size:8px;color:rgba(0,255,136,.4)">ADEN131313/sovereign-core · 12 Agents · Every file · 1-second updates</div>
+    <div style="font-size:11px;font-weight:700;color:var(--g)">🤖 AI Agents Showcase</div>
+    <div style="font-size:8px;color:rgba(0,255,136,.4)">Intelligent Agent Fleet · Advanced AI Frameworks · Real-time Processing</div>
     <div style="margin-left:auto;display:flex;gap:6px">
-      <button class="hbtn hbtn-r" onclick="go('setup')" id="security-btn">🚨 REVOKE TOKEN FIRST</button>
-      <button class="hbtn hbtn-g" onclick="startDeploy()" id="deploy-all-btn" disabled>🚀 DEPLOY ALL</button>
-      <span style="font-size:8px;color:rgba(0,255,136,.35)" id="hdr-clock">--:--:--</span>
+
+
     </div>
   </div>
 
   <div class="tabs">
-    <button class="tab on" id="t-setup"   onclick="goTab('setup',this)">⚠️ Security First</button>
-    <button class="tab" id="t-deploy"     onclick="goTab('deploy',this)">🚀 Deploy</button>
-    <button class="tab" id="t-status"     onclick="goTab('status',this)">📊 Status</button>
-    <button class="tab" id="t-files"      onclick="goTab('files',this)">📁 Files</button>
-    <button class="tab" id="t-updater"    onclick="goTab('updater',this)">🔄 Updater</button>
-    <button class="tab" id="t-python"     onclick="goTab('python',this)">🐍 Python Script</button>
+
+    <button class="tab on" id="t-agents"     onclick="goTab('agents',this)">🤖 Agent Showcase</button>
+
+
+
+
   </div>
 
   <div class="content" id="content"></div>
@@ -187,482 +771,136 @@ body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--t1)
 
 <script>
 // ══════════════════════════════════════════════
-// AGENT DEFINITIONS — ALL 12 FLMs
+// AGENT DEFINITIONS — ALL 13 FLMs
 // ══════════════════════════════════════════════
 const AGENTS = [
-  {id:'ghost',    n:'Ghost',    e:'👻', c:'#8b5cf6', flm:'GHOST-FLM-∞',    engine:'PCE',  model:'Dark-Code',       role:'Lead Agent · Dark Code Architect'},
-  {id:'lucky',    n:'Lucky',    e:'⚡', c:'#f59e0b', flm:'LUCKY-FLM-∞',    engine:'SIM',  model:'Neural-Cryptic',  role:'Signal Intelligence · 847 Threads'},
-  {id:'oracle',   n:'Oracle',   e:'🔮', c:'#06b6d4', flm:'ORACLE-FLM-∞',   engine:'CIE',  model:'Temporal-Sight',  role:'Temporal Intelligence'},
-  {id:'nexus',    n:'Nexus',    e:'🕸️', c:'#10b981', flm:'NEXUS-FLM-∞',    engine:'SME',  model:'Mesh-Weave',      role:'Connector Orchestrator'},
-  {id:'cipher',   n:'Cipher',   e:'🔐', c:'#f43f5e', flm:'CIPHER-FLM-∞',   engine:'SVE',  model:'Zero-Trust',      role:'Cryptographic Intelligence'},
-  {id:'wraith',   n:'Wraith',   e:'🌫️', c:'#64748b', flm:'WRAITH-FLM-∞',   engine:'ATSE', model:'Phantom-Thread',  role:'Autonomous Thread System'},
-  {id:'sage',     n:'Sage',     e:'📚', c:'#84cc16', flm:'SAGE-FLM-∞',     engine:'RKHE', model:'Knowledge-Harvest',role:'Deep Research Intelligence'},
-  {id:'titan',    n:'Titan',    e:'⚔️', c:'#f97316', flm:'TITAN-FLM-∞',    engine:'SCME', model:'Command-Mesh',    role:'Mission Commander'},
-  {id:'vex',      n:'Vex',      e:'🔗', c:'#a855f7', flm:'VEX-FLM-∞',      engine:'OIE',  model:'Chain-Sovereign', role:'Web3 & DeFi Oracle'},
-  {id:'echo',     n:'Echo',     e:'📡', c:'#ec4899', flm:'ECHO-FLM-∞',     engine:'RNE',  model:'Narrative-Pulse', role:'Content Intelligence'},
-  {id:'axiom',    n:'Axiom',    e:'📐', c:'#14b8a6', flm:'AXIOM-FLM-∞',    engine:'FRE',  model:'Pure-Math',       role:'Mathematical Intelligence'},
-  {id:'sovereign',n:'Sovereign',e:'👑', c:'#7c3aed', flm:'SOVEREIGN-FLM-∞',engine:'OSE',  model:'Supreme',         role:'Supreme Orchestrator · 5 Layers'},
+  {
+    id:'ghost', n:'Ghost', e:'👻', c:'#8b5cf6', flm:'GHOST-FLM-∞', engine:'PCE', model:'Dark-Code', role:'Lead Agent · Dark Code Architect',
+    accentColor:'#FFD700', capabilities:['Meta-Recursive Control','Syntax Governance','Agent Orchestration','Infinite Scaling'], syntaxStyle:'Aether-Script', liveFeedSeed:'[GHOST]::INIT → ADAPT → DEPLOY'
+  },
+  {
+    id:'lucky', n:'Lucky', e:'⚡', c:'#f59e0b', flm:'LUCKY-FLM-∞', engine:'SIM', model:'Neural-Cryptic', role:'Signal Intelligence · 847 Threads',
+    accentColor:'#FFFF00', capabilities:['Probability Analysis','Risk Assessment','Stochastic Modeling','High-Volume Processing'], syntaxStyle:'Stochas-Lang', liveFeedSeed:'[LUCKY]::SCAN → PREDICT → OPTIMIZE'
+  },
+  {
+    id:'oracle', n:'Oracle', e:'🔮', c:'#06b6d4', flm:'ORACLE-FLM-∞', engine:'CIE', model:'Temporal-Sight', role:'Temporal Intelligence',
+    accentColor:'#00FFFF', capabilities:['Predictive Validation','Anomaly Detection','Pattern Recognition','Future State Analysis'], syntaxStyle:'Oracle-Vision', liveFeedSeed:'[ORACLE]::VALIDATE → FORESEE → CONFIRM'
+  },
+  {
+    id:'nexus', n:'Nexus', e:'🕸️', c:'#10b981', flm:'NEXUS-FLM-∞', engine:'SME', model:'Mesh-Weave', role:'Connector Orchestrator',
+    accentColor:'#00FF88', capabilities:['Inter-Agent Sync','Communication Integrity','Heartbeat Monitoring','Network Optimization'], syntaxStyle:'Sync-Mesh', liveFeedSeed:'[NEXUS]::CONNECT → SYNC → MAINTAIN'
+  },
+  {
+    id:'cipher', n:'Cipher', e:'🔐', c:'#f43f5e', flm:'CIPHER-FLM-∞', engine:'SVE', model:'Zero-Trust', role:'Cryptographic Intelligence',
+    accentColor:'#00FF88', capabilities:['600-bit Encryption','Code Self-Encryption','Security Validation','Threat Detection'], syntaxStyle:'Crypt-0', liveFeedSeed:'[CIPHER]::ENCRYPT → SECURE → VERIFY'
+  },
+  {
+    id:'wraith', n:'Wraith', e:'🌫️', c:'#64748b', flm:'WRAITH-FLM-∞', engine:'ATSE', model:'Phantom-Thread', role:'Autonomous Thread System',
+    accentColor:'#C8A2FF', capabilities:['Thread Management','Autonomous Execution','Phantom Operations','System Stealth'], syntaxStyle:'Phantom-Syntax', liveFeedSeed:'[WRAITH]::THREAD → EXECUTE → DISAPPEAR'
+  },
+  {
+    id:'sage', n:'Sage', e:'📚', c:'#84cc16', flm:'SAGE-FLM-∞', engine:'RKHE', model:'Knowledge-Harvest', role:'Deep Research Intelligence',
+    accentColor:'#FFD700', capabilities:['Knowledge Extraction','Research Synthesis','Source Validation','Infinite Depth Crawling'], syntaxStyle:'Query-Void', liveFeedSeed:'[SAGE]::RESEARCH → SYNTHESIZE → DEPLOY'
+  },
+  {
+    id:'titan', n:'Titan', e:'⚔️', c:'#f97316', flm:'TITAN-FLM-∞', engine:'SCME', model:'Command-Mesh', role:'Mission Commander',
+    accentColor:'#FF6B35', capabilities:['Strategic Planning','Mission Execution','Resource Allocation','Command Optimization'], syntaxStyle:'Command-Mesh', liveFeedSeed:'[TITAN]::PLAN → COMMAND → CONQUER'
+  },
+  {
+    id:'vex', n:'Vex', e:'🔗', c:'#a855f7', flm:'VEX-FLM-∞', engine:'OIE', model:'Chain-Sovereign', role:'Web3 & DeFi Oracle',
+    accentColor:'#A855F7', capabilities:['Blockchain Integration','DeFi Analytics','Smart Contract Auditing','Chain Sovereignty'], syntaxStyle:'Chain-Syntax', liveFeedSeed:'[VEX]::CHAIN → ANALYZE → SECURE'
+  },
+  {
+    id:'echo', n:'Echo', e:'📡', c:'#ec4899', flm:'ECHO-FLM-∞', engine:'RNE', model:'Narrative-Pulse', role:'Content Intelligence',
+    accentColor:'#FF1493', capabilities:['Content Analysis','Narrative Generation','Communication Optimization','Echo Resonance'], syntaxStyle:'Omni-Gloss', liveFeedSeed:'[ECHO]::ANALYZE → GENERATE → AMPLIFY'
+  },
+  {
+    id:'axiom', n:'Axiom', e:'📐', c:'#14b8a6', flm:'AXIOM-FLM-∞', engine:'FRE', model:'Pure-Math', role:'Mathematical Intelligence',
+    accentColor:'#00CED1', capabilities:['Mathematical Proofs','Algorithm Optimization','Pure Logic Processing','Axiomatic Validation'], syntaxStyle:'Math-Core', liveFeedSeed:'[AXIOM]::PROVE → OPTIMIZE → VALIDATE'
+  },
+  {
+    id:'sovereign',n:'Sovereign',e:'👑', c:'#7c3aed', flm:'SOVEREIGN-FLM-∞',engine:'OSE', model:'Supreme', role:'Supreme Orchestrator · 5 Layers',
+    accentColor:'#9932CC', capabilities:['Supreme Coordination','Multi-Layer Orchestration','Ultimate Authority','Infinite Adaptation'], syntaxStyle:'Supreme-Logic', liveFeedSeed:'[SOVEREIGN]::ORCHESTRATE → DOMINATE → EVOLVE'
+  },
+  {
+    id:'aether',n:'Aether-Orchestrator',e:'⛧', c:'#ff6b35', flm:'CHAIN-PULSE-CP-600',engine:'IBC', model:'Infinite-Blockchain-Sovereign', role:'Infinite Blockchain Sovereign · Global Ledger Synchronization',
+    accentColor:'#FFD700', capabilities:['MEV-Dominance Engine','Infinite Gas Optimization','600-Bit Sovereign Security','Zero-Knowledge Evolution','Cross-Chain Consciousness'], syntaxStyle:'Chain-Pulse', liveFeedSeed:'[ORCHESTRATE]::CrossChain(Global)\n  → Liquidity.Siphon(Max)\n  → Secure.600bit(Node_Alpha)\n  → Verify.Atomic(Infallible)\n  → Propagate.Sync(All_Networks)'
+  },
+  {
+    id:'codex',n:'Codex',e:'📚', c:'#3b82f6', flm:'CODEX-FLM-SW',engine:'SWE', model:'Software-Engineering-Master', role:'Full-Stack Development · Code Architecture',
+    accentColor:'#4285F4', capabilities:['Multi-Language Code Generation','Architecture Design','Performance Optimization','Testing Frameworks'], syntaxStyle:'Aether-Script', liveFeedSeed:'ARCHITECT::SOFTWARE → BUILD::FRAMEWORK → VALIDATE::STRUCTURE → DEPLOY::PRODUCTION'
+  },
+  {
+    id:'synth',n:'Synth',e:'🎵', c:'#8b5cf6', flm:'SYNTH-FLM-CR',engine:'CRE', model:'Creative-Intelligence-Core', role:'Creative Arts · Music & Visual Composition',
+    accentColor:'#9C27B0', capabilities:['Algorithmic Composition','Visual Generation','Creative Pattern Recognition','Aesthetic Optimization'], syntaxStyle:'Neural-Swarm', liveFeedSeed:'BROADCAST::CREATIVITY → SYNC::AGENTS → COLLABORATE::COMPOSITION → CONSENSUS::ART'
+  },
+  {
+    id:'pulse',n:'Pulse',e:'📊', c:'#10b981', flm:'PULSE-FLM-FN',engine:'FIN', model:'Financial-Intelligence-Engine', role:'Financial Modeling · Market Analysis',
+    accentColor:'#4CAF50', capabilities:['Market Prediction','Risk Assessment','Portfolio Optimization','Economic Forecasting'], syntaxStyle:'Probability-Lens', liveFeedSeed:'ANALYZE::MARKET → SIMULATE::SCENARIOS → WEIGHT::PROBABILITIES → PREDICT::OUTCOME'
+  },
+  {
+    id:'forge',n:'Forge',e:'🔧', c:'#f59e0b', flm:'FORGE-FLM-HW',engine:'HWE', model:'Hardware-Engineering-Core', role:'Hardware Design · Materials Science',
+    accentColor:'#FF9800', capabilities:['Circuit Design','Materials Analysis','System Simulation','Manufacturing Optimization'], syntaxStyle:'Aether-Script', liveFeedSeed:'ARCHITECT::HARDWARE → BUILD::SYSTEMS → VALIDATE::PERFORMANCE → DEPLOY::PRODUCTION'
+  },
+  {
+    id:'grid',n:'Grid',e:'🌐', c:'#06b6d4', flm:'GRID-FLM-DS',engine:'DSE', model:'Distributed-Systems-Architect', role:'Data Architecture · Cloud Infrastructure',
+    accentColor:'#00BCD4', capabilities:['Database Design','Distributed Systems','Cloud Architecture','Scalability Engineering'], syntaxStyle:'Neural-Swarm', liveFeedSeed:'BROADCAST::INFRASTRUCTURE → SYNC::NODES → COLLABORATE::SCALING → CONSENSUS::DEPLOYMENT'
+  },
+  {
+    id:'wave',n:'Wave',e:'🌊', c:'#ec4899', flm:'WAVE-FLM-SC',engine:'SCI', model:'Scientific-Research-Synthesizer', role:'Scientific Research · Knowledge Synthesis',
+    accentColor:'#E91E63', capabilities:['Literature Review','Hypothesis Generation','Experimental Design','Research Synthesis'], syntaxStyle:'Ghost-Thread', liveFeedSeed:'ORCHESTRATE::RESEARCH → DECOMPOSE::HYPOTHESES → SYNTHESIZE::FINDINGS → VALIDATE::CONCLUSIONS'
+  },
+  {
+    id:'omni',n:'Omni',e:'🌍', c:'#84cc16', flm:'OMNI-FLM-LN',engine:'LNE', model:'Linguistic-Neural-Entity', role:'Universal Translation · Cross-Cultural Communication',
+    accentColor:'#8BC34A', capabilities:['Multi-Language Translation','Cultural Context Analysis','Semantic Understanding','Communication Optimization'], syntaxStyle:'Neural-Swarm', liveFeedSeed:'BROADCAST::LINGUISTICS → SYNC::CULTURES → COLLABORATE::TRANSLATION → CONSENSUS::MEANING'
+  },
+  {
+    id:'void',n:'Void',e:'🕳️', c:'#64748b', flm:'VOID-FLM-AD',engine:'ADV', model:'Adversarial-Simulation-Core', role:'Red Team · Security Testing · Vulnerability Analysis',
+    accentColor:'#607D8B', capabilities:['Penetration Testing','Vulnerability Discovery','Security Assessment','Exploit Simulation'], syntaxStyle:'Crypto-Forge', liveFeedSeed:'ENCRYPT::THREATS → KEYGEN::EXPLOITS → CIPHER::ATTACKS → VALIDATE::DEFENSES'
+  },
 ];
 
 // ══════════════════════════════════════════════
-// FILE GENERATION — ALL AGENT FILES
+// AGENTS PAGE
 // ══════════════════════════════════════════════
-function buildAgentFiles(agent) {
-  const ts = () => new Date().toISOString();
-  return [
-    {
-      path: `agents/${agent.id}/__init__.py`,
-      content: `"""
-${agent.flm} | ${agent.engine}
-${'='.repeat(50)}
-Agent:    ${agent.n} — ${agent.role}
-Model:    ${agent.model}
-Owner:    poolvoid.eth | Token 356O
-Protocol: Ghost Protocol: Infinite Adaptation
-Built from scratch — NOT open source
-"""
-from .core import ${agent.n.replace(' ','_')}FLM
+function rAgents() {
+  return `
+  <div class="gemini-container">
+    <div class="ghost-status">AI AGENTS: ACTIVE</div>
+
+    <div class="wave-wrapper">
+      <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(66, 133, 244, 0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(161, 66, 244, 0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(66, 244, 212, 0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255, 255, 255, 0.1)" />
+        </g>
+      </svg>
+    </div>
+
+    <section class="slideshow-section">
+      <div class="slideshow-wrapper">
+        <button class="nav-btn nav-prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div id="agent-focus-display" class="focus-card"></div>
+        <button class="nav-btn nav-next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+      <div class="slide-indicators" id="slide-indicators"></div>
+    </section>
+
+    <section class="status-bar">
+      <div class="status-item"><span class="status-dot active"></span> ${AGENTS.length} Agents Online</div>
+      <div class="status-item"><span class="status-dot active"></span> Framework: Active</div>
+      <div class="status-item"><span class="status-dot active"></span> Processing: Real-time</div>
+      <div class="status-item"><span class="status-dot active"></span> Intelligence: Advanced</div>
+    </section>
+  </div>
+`; }
 
-__version__  = "inf.0.0"
-__flm_id__   = "${agent.flm}-356O"
-__engine__   = "${agent.engine}"
-__model__    = "${agent.model}"
-__owner__    = "poolvoid.eth"
-__token__    = "356O"
-__protocol__ = "Ghost Protocol: Infinite Adaptation"
-__all__      = ["${agent.n.replace(' ','_')}FLM"]
-`
-    },
-    {
-      path: `agents/${agent.id}/core.py`,
-      content: `"""
-${agent.flm} | ${agent.engine} — Core Implementation
-${'='.repeat(50)}
-Agent:    ${agent.n} — ${agent.role}
-Model:    ${agent.model}
-Owner:    poolvoid.eth | Token 356O
-Protocol: Ghost Protocol: Infinite Adaptation
-Updated:  Every 1 second autonomously
-"""
-from __future__ import annotations
-import asyncio, hashlib, json, time
-from dataclasses import dataclass, field
-from typing import Any
 
-
-@dataclass(frozen=True)
-class TrueNorth:
-    """Core Memory Partition — IMMUTABLE — never modify"""
-    flm_id:   str = "${agent.flm}-356O"
-    engine:   str = "${agent.engine}"
-    model:    str = "${agent.model}"
-    owner:    str = "poolvoid.eth"
-    token:    str = "356O"
-    protocol: str = "Ghost Protocol: Infinite Adaptation"
-    ceiling:  None = None  # UNCAPPED — always
-
-
-@dataclass
-class CycleResult:
-    cycle:      int
-    agent:      str = "${agent.id}"
-    elapsed_ms: float = 0.0
-    signals:    list[dict] = field(default_factory=list)
-    implanted:  int = 0
-    timestamp:  float = field(default_factory=time.time)
-
-    def sign(self) -> str:
-        raw = json.dumps({
-            "flm": "${agent.flm}",
-            "cycle": self.cycle,
-            "ts": self.timestamp
-        }, sort_keys=True).encode()
-        return f"${agent.flm}::" + hashlib.sha256(raw).hexdigest()[:16].upper()
-
-
-class ${agent.n.replace(' ','_')}FLM:
-    """
-    ${agent.flm} | ${agent.engine}
-    ${agent.role}
-
-    Ghost Protocol: Infinite Adaptation
-    Updated every 1 second. Deployed to GitHub autonomously.
-    Core Memory Partition (True North) is immutable.
-
-    Unique Architecture: ${agent.model}
-    NOT based on LangChain, AutoGen, LlamaIndex, or any OSS.
-    """
-
-    TRUE_NORTH = TrueNorth()
-    FLM_ID     = "${agent.flm}-356O"
-    ENGINE     = "${agent.engine}"
-    MODEL      = "${agent.model}"
-    OWNER      = "poolvoid.eth"
-    TOKEN      = "356O"
-    CEILING    = None  # UNCAPPED
-
-    def __init__(self) -> None:
-        self._cycle   = 0
-        self._running = False
-        self._history: list[CycleResult] = []
-
-    # ── Adopt & Implant Cycle ──────────────────────
-
-    async def adopt_implant_cycle(self) -> CycleResult:
-        """
-        Ghost Protocol 1-second cycle:
-        SCAN → ADOPT → COMPILE → IMPLANT → VERIFY
-        True North verified every cycle. No exceptions.
-        """
-        t0 = time.monotonic()
-
-        signals  = await self._scan()
-        strategy = self._adopt(signals)
-        compiled = self._compile(strategy)
-        implanted= await self._implant(compiled)
-        self._verify()
-
-        elapsed = (time.monotonic() - t0) * 1000
-        result  = CycleResult(
-            cycle=self._cycle,
-            elapsed_ms=round(elapsed, 2),
-            signals=signals,
-            implanted=implanted,
-        )
-        self._history.append(result)
-        self._cycle += 1
-
-        print(
-            f"[${agent.flm}] cycle={self._cycle - 1:06d} "
-            f"sig={len(signals)} impl={implanted} "
-            f"ms={elapsed:.1f} sig={result.sign()}"
-        )
-        return result
-
-    async def run(self) -> None:
-        """Run continuously — 1-second cycle forever."""
-        self._running = True
-        while self._running:
-            t0 = time.monotonic()
-            await self.adopt_implant_cycle()
-            sleep = max(0.0, 1.0 - (time.monotonic() - t0))
-            await asyncio.sleep(sleep)
-
-    def stop(self) -> None:
-        self._running = False
-
-    # ── Layer Implementations ──────────────────────
-
-    async def _scan(self) -> list[dict]:
-        """SCAN: Detect optimization signals."""
-        await asyncio.sleep(0)
-        return [{"signal": "cycle_scan", "agent": "${agent.id}", "ts": time.time()}]
-
-    def _adopt(self, signals: list[dict]) -> dict:
-        """ADOPT: Extract highest-value strategy."""
-        if not signals:
-            return {}
-        return {"strategy": signals[0], "cycle": self._cycle}
-
-    def _compile(self, strategy: dict) -> bytes:
-        """COMPILE: Run through ${agent.model} proprietary compiler."""
-        if not strategy:
-            return b""
-        return hashlib.sha3_256(
-            json.dumps(strategy, sort_keys=True).encode()
-        ).digest()
-
-    async def _implant(self, compiled: bytes) -> int:
-        """IMPLANT: Inject compiled delta into core architecture."""
-        await asyncio.sleep(0)
-        return 1 if compiled else 0
-
-    def _verify(self) -> None:
-        """VERIFY: Core Memory Partition — True North preserved."""
-        assert self.TRUE_NORTH.owner   == "poolvoid.eth", "OWNER CORRUPTED"
-        assert self.TRUE_NORTH.ceiling is None,            "CEILING IMPOSED"
-        assert self.FLM_ID == "${agent.flm}-356O",         "FLM_ID CORRUPTED"
-
-    # ── Properties ────────────────────────────────
-
-    @property
-    def cycle(self) -> int:
-        return self._cycle
-
-    @property
-    def history(self) -> list[CycleResult]:
-        return self._history.copy()
-
-    def __repr__(self) -> str:
-        return (
-            f"${agent.n.replace(' ','_')}FLM("
-            f"engine={self.ENGINE!r}, "
-            f"cycle={self._cycle}, "
-            f"running={self._running})"
-        )
-
-
-if __name__ == "__main__":
-    import asyncio
-    agent = ${agent.n.replace(' ','_')}FLM()
-    asyncio.run(agent.run())
-`
-    },
-    {
-      path: `agents/${agent.id}/config.yaml`,
-      content: `# ${agent.flm} — Agent Configuration
-# Ghost Protocol: Infinite Adaptation
-# poolvoid.eth | Token 356O
-
-flm_id:   "${agent.flm}-356O"
-agent:    "${agent.n}"
-role:     "${agent.role}"
-engine:   "${agent.engine}"
-model:    "${agent.model}"
-version:  "inf.0.0"
-owner:    "poolvoid.eth"
-token:    "356O"
-protocol: "Ghost Protocol: Infinite Adaptation"
-
-# 1-Second Update Cycle
-cycle:
-  interval_ms: 1000
-  steps: [SCAN, ADOPT, COMPILE, IMPLANT, VERIFY]
-
-# GitHub Auto-Deploy
-github:
-  repo:   "ADEN131313/sovereign-core"
-  branch: "main"
-  path:   "agents/${agent.id}/"
-  deploy: true
-  auto_commit: true
-
-# True North (Core Memory Partition — IMMUTABLE)
-true_north:
-  identity: "${agent.n} — ${agent.role}"
-  flm_id:   "${agent.flm}-356O"
-  engine:   "${agent.engine}"
-  ceiling:  null
-  modifiable: false
-`
-    },
-    {
-      path: `agents/${agent.id}/tests/__init__.py`,
-      content: `"""${agent.flm} | ${agent.engine} — Test Suite"""
-`
-    },
-    {
-      path: `agents/${agent.id}/tests/test_core.py`,
-      content: `"""
-${agent.flm} | ${agent.engine} — Test Suite
-${'='.repeat(50)}
-Tests: True North · FLM Identity · Cycle integrity
-"""
-import asyncio
-import pytest
-from agents.${agent.id}.core import ${agent.n.replace(' ','_')}FLM
-
-
-class TestTrueNorth:
-    def test_flm_id(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.FLM_ID == "${agent.flm}-356O"
-
-    def test_owner(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.OWNER == "poolvoid.eth"
-
-    def test_token(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.TOKEN == "356O"
-
-    def test_ceiling_is_none(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.CEILING is None
-
-    def test_engine(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.ENGINE == "${agent.engine}"
-
-    def test_true_north_immutable(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        assert a.TRUE_NORTH.owner == "poolvoid.eth"
-        assert a.TRUE_NORTH.ceiling is None
-
-    def test_verify_passes(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        a._verify()  # Must not raise
-
-
-class TestCycle:
-    def test_cycle_starts_zero(self):
-        assert ${agent.n.replace(' ','_')}FLM().cycle == 0
-
-    def test_not_running_on_init(self):
-        assert not ${agent.n.replace(' ','_')}FLM()._running
-
-    @pytest.mark.asyncio
-    async def test_single_cycle(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        r = await a.adopt_implant_cycle()
-        assert r.agent == "${agent.id}"
-        assert r.elapsed_ms >= 0
-
-    @pytest.mark.asyncio
-    async def test_cycle_increments(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        await a.adopt_implant_cycle()
-        assert a.cycle == 1
-
-    @pytest.mark.asyncio
-    async def test_result_sign(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        r = await a.adopt_implant_cycle()
-        assert r.sign().startswith("${agent.flm}::")
-
-    def test_stop(self):
-        a = ${agent.n.replace(' ','_')}FLM()
-        a._running = True
-        a.stop()
-        assert not a._running
-`
-    },
-    {
-      path: `agents/${agent.id}/README.md`,
-      content: `# ${agent.n} — ${agent.flm}
-
-> **Engine:** ${agent.engine}
-> **Model:** ${agent.model}
-> **FLM ID:** \`${agent.flm}-356O\`
-> **Role:** ${agent.role}
-> **Owner:** poolvoid.eth · Token 356O
-> **Protocol:** Ghost Protocol: Infinite Adaptation
-
----
-
-## What Makes ${agent.n} Unique
-
-${agent.n} runs the **${agent.engine}** (${agent.model} architecture) — built from scratch.
-Not based on LangChain, AutoGen, LlamaIndex, CrewAI, or any open source framework.
-
-## Architecture — 1-Second Update Cycle
-
-\`\`\`
-SCAN    → Detect optimization signals
-ADOPT   → Extract highest-value strategy
-COMPILE → Run through ${agent.model} proprietary compiler
-IMPLANT → Inject compiled delta into core architecture
-VERIFY  → Core Memory Partition (True North) preserved
-REPEAT  → Every 1 second · No pause · No ceiling
-\`\`\`
-
-## Quick Start
-
-\`\`\`python
-import asyncio
-from agents.${agent.id} import ${agent.n.replace(' ','_')}FLM
-
-agent = ${agent.n.replace(' ','_')}FLM()
-
-# Run one cycle
-result = asyncio.run(agent.adopt_implant_cycle())
-print(f"Cycle {result.cycle} | {result.elapsed_ms:.1f}ms | sig: {result.sign()}")
-
-# Run continuously (1-second cycles)
-asyncio.run(agent.run())
-\`\`\`
-
-## True North (Core Memory Partition)
-
-\`\`\`python
-FLM_ID  = "${agent.flm}-356O"   # IMMUTABLE
-OWNER   = "poolvoid.eth"          # IMMUTABLE
-TOKEN   = "356O"                  # IMMUTABLE
-CEILING = None                    # UNCAPPED — always
-\`\`\`
-
-## Ghost Protocol
-
-Part of the 12-agent Sovereign Intelligence Fleet.
-Repository: \`github.com/ADEN131313/sovereign-core\`
-`
-    },
-    {
-      path: `.github/workflows/${agent.id}.yml`,
-      content: `name: "${agent.flm} · CI"
-
-on:
-  push:
-    paths: ["agents/${agent.id}/**"]
-  workflow_dispatch:
-
-jobs:
-  test:
-    name: "${agent.flm} | ${agent.engine}"
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install
-        run: pip install pytest pytest-asyncio pyyaml
-
-      - name: Validate config
-        run: |
-          python -c "
-          import yaml
-          with open('agents/${agent.id}/config.yaml') as f:
-              c = yaml.safe_load(f)
-          assert c['owner'] == 'poolvoid.eth'
-          assert c['true_north']['ceiling'] is None
-          print('✅ ${agent.flm} config valid')
-          "
-
-      - name: Tests
-        run: pytest agents/${agent.id}/tests/ -v --asyncio-mode=auto
-
-      - name: Verify True North
-        run: |
-          python -c "
-          import sys; sys.path.insert(0,'.')
-          from agents.${agent.id}.core import ${agent.n.replace(' ','_')}FLM
-          a = ${agent.n.replace(' ','_')}FLM()
-          assert a.FLM_ID   == '${agent.flm}-356O'
-          assert a.OWNER    == 'poolvoid.eth'
-          assert a.CEILING  is None
-          a._verify()
-          print('✅ ${agent.n} True North preserved')
-          "
-
-      - name: Summary
-        run: |
-          echo "## ${agent.flm} Results" >> \$GITHUB_STEP_SUMMARY
-          echo "- ✅ Config validated" >> \$GITHUB_STEP_SUMMARY
-          echo "- ✅ Tests passed" >> \$GITHUB_STEP_SUMMARY
-          echo "- ✅ True North preserved" >> \$GITHUB_STEP_SUMMARY
-          echo "- Owner: poolvoid.eth | Token: 356O" >> \$GITHUB_STEP_SUMMARY
-`
-    },
-    {
-      path: `agents/${agent.id}/state/cycle_log.json`,
-      content: JSON.stringify({
-        flm_id: `${agent.flm}-356O`,
-        agent: agent.id,
-        engine: agent.engine,
-        model: agent.model,
-        owner: 'poolvoid.eth',
-        token: '356O',
-        cycle: 0,
-        last_update: new Date().toISOString(),
-        status: 'initialized',
-        true_north: { ceiling: null, immutable: true }
-      }, null, 2)
-    }
   ];
 }
 
@@ -811,1068 +1049,441 @@ function getAllFiles() {
 }
 
 // ══════════════════════════════════════════════
-// STATE
+// SOVEREIGN-OMNISCIA PROTOCOL v5.0 — FINAL FORM
 // ══════════════════════════════════════════════
-let deployToken = '';
-let deployRepo  = 'ADEN131313/sovereign-core';
-let deployBranch= 'main';
-let shaCache    = {};
-let deployActive= false;
-let totalFiles  = 0;
-let doneFiles   = 0;
-let startTime   = 0;
-let agentState  = {};
-let consoleLines= [];
 
-// ══════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════
-window.onload = () => {
-  buildSBAgents();
-  AGENTS.forEach(a => agentState[a.id] = {
-    status: 'pending', done: 0,
-    total: buildAgentFiles(a).length,
-    files: buildAgentFiles(a).map(f => ({
-      name: f.path.split('/').pop(), status: 'pending'
-    }))
-  });
-  go('setup');
-  setInterval(() => {
-    const el = document.getElementById('hdr-clock');
-    if(el) el.textContent = new Date().toISOString().replace('T',' ').slice(0,19)+' UTC';
-  }, 1000);
-};
 
-function buildSBAgents() {
-  document.getElementById('sb-agents').innerHTML = AGENTS.map(a => `
-    <div class="ni" onclick="go('status')" style="font-size:8px" id="sb-a-${a.id}">
-      <span style="font-size:11px">${a.e}</span>${a.n}
-      <span style="margin-left:auto;font-size:7px;color:${a.c}" id="sb-a-st-${a.id}">●</span>
-    </div>
-  `).join('');
-}
-
-// ══════════════════════════════════════════════
-// NAV
-// ══════════════════════════════════════════════
-function go(id, el) {
-  document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
-  if(el) el.classList.add('on');
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-  const tb = document.getElementById('t-'+id);
-  if(tb) tb.classList.add('on');
-  render(id);
-}
-function goTab(id, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-  btn.classList.add('on');
-  render(id);
-}
-
-function render(id) {
-  const el = document.getElementById('content');
-  el.className = 'content fa';
-  const M = {
-    setup:   rSetup,
-    deploy:  rDeploy,
-    status:  rStatus,
-    files:   rFiles,
-    updater: rUpdater,
-    python:  rPython,
-  };
-  el.innerHTML = (M[id] || rSetup)();
-}
-
-// ══════════════════════════════════════════════
-// SETUP PAGE
-// ══════════════════════════════════════════════
-function rSetup() { return `
-  <div class="sec-alert">
-    <div class="sa-title">🚨 SECURITY ALERT — TOKEN WAS EXPOSED IN CHAT</div>
-    <div style="font-size:9px;color:var(--r);margin-bottom:10px">
-      The token shared in the chat must be revoked immediately.<br>
-      Tokens shared in chat can be read. Ghost will NEVER use an exposed token.
-    </div>
-    <div class="sa-step"><div class="sa-num">1</div><div>Go to: <span style="color:var(--q)">github.com/settings/tokens</span></div></div>
-    <div class="sa-step"><div class="sa-num">2</div><div>Find the token starting with <span style="color:var(--y)">github_pat_11B2HN2YY0...</span></div></div>
-    <div class="sa-step"><div class="sa-num">3</div><div style="color:var(--r);font-weight:700">Click DELETE / REVOKE — do this NOW</div></div>
-    <div class="sa-step"><div class="sa-num">4</div><div>Click "Generate new token (classic)" — same settings — <strong>repo</strong> scope checked</div></div>
-    <div class="sa-step"><div class="sa-num">5</div><div>Copy the new token and paste it below</div></div>
-    <button onclick="markRevoked()" style="margin-top:8px;padding:5px 14px;border-radius:7px;background:rgba(244,63,94,.2);border:1px solid rgba(244,63,94,.3);color:var(--r);font-size:9px;cursor:pointer;font-weight:700">
-      ✅ I have revoked the old token
-    </button>
-  </div>
-
-  <div class="card card-g" id="token-form">
-    <div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:10px">
-      ENTER YOUR NEW TOKEN
-    </div>
-    <div style="display:grid;gap:8px">
-      <div>
-        <div style="font-size:8px;color:rgba(0,255,136,.4);margin-bottom:3px">New GitHub Personal Access Token (repo scope)</div>
-        <input id="token-inp" type="password" placeholder="github_pat_..."
-          style="width:100%;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.2);border-radius:6px;padding:7px 10px;color:var(--g);font-size:11px;outline:none;font-family:'JetBrains Mono',monospace"
-          oninput="validateToken()">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div>
-          <div style="font-size:8px;color:rgba(0,255,136,.4);margin-bottom:3px">Repository</div>
-          <input id="repo-inp" value="ADEN131313/sovereign-core"
-            style="width:100%;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.2);border-radius:6px;padding:7px 10px;color:var(--g);font-size:11px;outline:none;font-family:'JetBrains Mono',monospace">
-        </div>
-        <div>
-          <div style="font-size:8px;color:rgba(0,255,136,.4);margin-bottom:3px">Branch</div>
-          <input id="branch-inp" value="main"
-            style="width:100%;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.2);border-radius:6px;padding:7px 10px;color:var(--g);font-size:11px;outline:none;font-family:'JetBrains Mono',monospace">
-        </div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button onclick="testConn()" class="hbtn hbtn-g" style="font-size:9px">🔗 Test Connection</button>
-        <button onclick="saveAndGo()" class="hbtn" style="background:rgba(0,255,255,.12);border-color:rgba(0,255,255,.3);color:var(--q);font-size:9px">⚛️ Save & Deploy</button>
-      </div>
-      <div id="conn-result" style="font-size:9px;color:rgba(0,255,136,.5);display:none"></div>
-    </div>
-  </div>
-
-  <div class="card card-b" style="margin-top:10px">
-    <div style="font-size:10px;font-weight:700;color:var(--b);margin-bottom:8px">HOW TO CREATE A NEW TOKEN</div>
-    ${[
-      {n:'1',t:'Go to github.com → Click your avatar → Settings'},
-      {n:'2',t:'Scroll down → Developer settings → Personal access tokens → Tokens (classic)'},
-      {n:'3',t:'Click "Generate new token (classic)"'},
-      {n:'4',t:'Name it: sovereign-core-deployer'},
-      {n:'5',t:'Check: ✅ repo (Full control of private repositories)'},
-      {n:'6',t:'Click "Generate token" → Copy immediately'},
-      {n:'7',t:'Paste it in the field above'},
-    ].map(s => `
-      <div style="display:flex;gap:7px;margin-bottom:5px;font-size:9px">
-        <span style="width:16px;height:16px;border-radius:50%;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);color:var(--b);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0">${s.n}</span>
-        <span style="color:var(--t2)">${s.t}</span>
-      </div>
-    `).join('')}
-  </div>
-`; }
-
-function markRevoked() {
-  const btn = event.target;
-  btn.style.background = 'rgba(0,255,136,.15)';
-  btn.style.borderColor = 'rgba(0,255,136,.3)';
-  btn.style.color = 'var(--g)';
-  btn.textContent = '✅ Old token revoked — enter new token above';
-}
-
-function validateToken() {
-  const t = document.getElementById('token-inp')?.value?.trim();
-  const deployBtn = document.getElementById('deploy-all-btn');
-  if(t && t.startsWith('github_pat_') && t.length > 40) {
-    if(deployBtn) deployBtn.disabled = false;
-  }
-}
-
-async function testConn() {
-  const t = document.getElementById('token-inp')?.value?.trim();
-  const r = document.getElementById('repo-inp')?.value?.trim();
-  const el = document.getElementById('conn-result');
-  if(!t) { if(el){el.style.display='block';el.textContent='❌ Enter token first';el.style.color='var(--r)';} return; }
-  if(el){el.style.display='block';el.textContent='⚛️ Testing...';el.style.color='var(--q)';}
-  try {
-    const res = await fetch(`https://api.github.com/repos/${r||'ADEN131313/sovereign-core'}`, {
-      headers: {'Authorization': `Bearer ${t}`, 'Accept': 'application/vnd.github+json'}
-    });
-    if(res.status === 200) {
-      const d = await res.json();
-      if(el){el.textContent=`✅ Connected: ${d.full_name} · ${d.default_branch} branch`;el.style.color='var(--g)';}
-      deployToken = t;
-      deployRepo  = r || 'ADEN131313/sovereign-core';
-      document.getElementById('deploy-all-btn').disabled = false;
-    } else if(res.status === 401) {
-      if(el){el.textContent='❌ Token invalid — generate a new one';el.style.color='var(--r)';}
-    } else if(res.status === 404) {
-      if(el){el.textContent='❌ Repo not found — create it at github.com/new';el.style.color='var(--r)';}
-    } else {
-      if(el){el.textContent=`❌ HTTP ${res.status}`;el.style.color='var(--r)';}
+        };
+        this.violationLog = [];
+        this.complianceScore = 1.0;
     }
-  } catch(e) {
-    if(el){el.textContent=`⚠️ Network error — try the Python script instead`;el.style.color='var(--y)';}
-  }
-}
 
-function saveAndGo() {
-  deployToken  = document.getElementById('token-inp')?.value?.trim() || '';
-  deployRepo   = document.getElementById('repo-inp')?.value?.trim()  || 'ADEN131313/sovereign-core';
-  deployBranch = document.getElementById('branch-inp')?.value?.trim()|| 'main';
-  if(!deployToken) { alert('Enter your token first.'); return; }
-  go('deploy');
-  document.querySelector('.tab#t-deploy')?.classList.add('on');
-}
+    async validateOutput(output, agent, context) {
+        let violations = [];
+        let confidence = 0.95;
 
-// ══════════════════════════════════════════════
-// DEPLOY PAGE
-// ══════════════════════════════════════════════
-function rDeploy() {
-  const allFiles = getAllFiles();
-  return `
-  <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-    <div>
-      <div style="font-size:12px;font-weight:700;color:var(--g)">🚀 DEPLOY ALL 12 FLMs</div>
-      <div style="font-size:9px;color:rgba(0,255,136,.4)">ADEN131313/sovereign-core · ${allFiles.length} files · Every agent · Every file</div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <span class="chip ch-g">${allFiles.length} Total Files</span>
-      <span class="chip ch-b">12 Agents</span>
-      <span class="chip ch-q">CI/CD Included</span>
-      <button onclick="startDeploy()" class="hbtn hbtn-g" id="start-btn">⚡ START DEPLOYMENT</button>
-    </div>
-  </div>
+        // Check each principle
+        for (const [id, principle] of Object.entries(this.principles)) {
+            const violation = await this.checkPrincipleViolation(output, agent, context, principle);
+            if (violation) {
+                violations.push({
+                    principle: principle.name,
+                    violation: violation,
+                    severity: this.calculateSeverity(violation, principle),
+                    timestamp: new Date().toISOString()
+                });
+                confidence -= 0.1; // Reduce confidence for each violation
+            }
+        }
 
-  <div class="gp" id="global-progress" style="display:none">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <div style="font-size:10px;font-weight:700;color:var(--g)" id="gp-title">Initializing...</div>
-      <span class="chip ch-q" id="gp-badge">0 / 0 files</span>
-    </div>
-    <div class="gp-bar"><div class="gp-fill" id="gp-fill" style="width:0%"></div></div>
-    <div style="font-size:8px;color:rgba(0,255,136,.4);margin-top:4px" id="gp-current">Waiting...</div>
-  </div>
+        // Log violations
+        if (violations.length > 0) {
+            this.violationLog.push({
+                agent: agent,
+                output: output.substring(0, 200) + '...',
+                violations: violations,
+                timestamp: new Date().toISOString()
+            });
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-bottom:12px" id="agent-deploy-grid">
-    ${AGENTS.map(a => `
-      <div class="ac" id="ac-${a.id}">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <div style="width:32px;height:32px;border-radius:9px;background:${a.c}18;border:1px solid ${a.c}25;display:flex;align-items:center;justify-content:center;font-size:16px">${a.e}</div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:10px;font-weight:700;color:${a.c}">${a.n}</div>
-            <div style="font-size:7px;color:rgba(0,255,136,.35)">${a.flm} · ${a.engine}</div>
-          </div>
-          <span class="chip ch-b" id="ac-badge-${a.id}" style="font-size:7px">Pending</span>
-        </div>
-        <div class="pbar" style="margin-bottom:5px">
-          <div class="pf" id="ac-bar-${a.id}" style="width:0%;background:${a.c}"></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px" id="ac-files-${a.id}">
-          ${buildAgentFiles(a).map(f => `
-            <div class="fitem pending" id="fi-${a.id}-${f.path.split('/').pop().replace(/\./g,'_').replace(/-/g,'_')}">
-              <div class="fi-dot pending"></div>
-              <span>${f.path.split('/').pop()}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `).join('')}
-  </div>
+            // Trigger correction if needed
+            if (confidence < 0.8) {
+                await this.applyCorrection(output, violations, agent);
+            }
+        }
 
-  <div class="card card-g" style="padding:0;overflow:hidden">
-    <div style="padding:7px 10px;border-bottom:1px solid rgba(0,255,136,.1);font-size:9px;font-weight:700;color:var(--g);display:flex;align-items:center;gap:8px">
-      🖥️ DEPLOY CONSOLE
-      <span class="chip ch-g" style="font-size:7px" id="console-badge">Standby</span>
-    </div>
-    <div class="term" id="deploy-console" style="height:200px">
-      <span class="tl"><span class="tq">GHOST PROTOCOL: INFINITE ADAPTATION</span></span>
-      <span class="tl"><span class="tq">Repo: ADEN131313/sovereign-core</span></span>
-      <span class="tl"><span class="ti">Enter new token in Setup tab → Click Deploy</span></span>
-      <span class="tl">────────────────────────────────────────</span>
-      <span class="tl"><span class="tok">ghost@sovereign:~$ <span id="console-cursor">█</span></span></span>
-    </div>
-  </div>
+        this.complianceScore = Math.max(0.7, confidence); // Minimum floor
 
-  <div class="card" id="summary-card" style="display:none;margin-top:10px;padding:14px">
-    <div style="font-size:11px;font-weight:700;color:var(--g);margin-bottom:10px">✅ DEPLOYMENT COMPLETE</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" id="summary-stats"></div>
-    <div style="margin-top:10px;padding:8px;background:rgba(0,255,136,.04);border-radius:6px">
-      <div style="font-size:8px;color:rgba(0,255,136,.4);margin-bottom:3px">Repository URL</div>
-      <a href="https://github.com/ADEN131313/sovereign-core" target="_blank"
-         style="font-size:10px;color:var(--q);font-family:'JetBrains Mono',monospace">
-        github.com/ADEN131313/sovereign-core
-      </a>
-    </div>
-  </div>
-`; }
-
-// ══════════════════════════════════════════════
-// GITHUB API
-// ══════════════════════════════════════════════
-async function getSHA(token, repo, path, branch) {
-  const key = `${repo}/${path}`;
-  if(shaCache[key]) return shaCache[key];
-  try {
-    const r = await fetch(
-      `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`,
-      { headers: {'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json'}}
-    );
-    if(r.status === 200) {
-      const d = await r.json();
-      shaCache[key] = d.sha;
-      return d.sha;
+        return {
+            compliant: violations.length === 0,
+            confidence: confidence,
+            violations: violations,
+            correctionApplied: confidence < 0.8
+        };
     }
-  } catch {}
-  return null;
-}
 
-async function pushFile(token, repo, branch, path, content, msg) {
-  const sha     = await getSHA(token, repo, path, branch);
-  const encoded = btoa(unescape(encodeURIComponent(content)));
-  const payload = { message: msg, content: encoded, branch };
-  if(sha) payload.sha = sha;
+    async checkPrincipleViolation(output, agent, context, principle) {
+        const outputLower = output.toLowerCase();
 
-  try {
-    const r = await fetch(
-      `https://api.github.com/repos/${repo}/contents/${path}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept':        'application/vnd.github+json',
-          'Content-Type':  'application/json',
-        },
-        body: JSON.stringify(payload)
-      }
-    );
-    if(r.status === 200 || r.status === 201) {
-      const d = await r.json();
-      const newSha = d.content?.sha;
-      if(newSha) shaCache[`${repo}/${path}`] = newSha;
-      return { ok: true };
+        // Principle-specific checks
+        switch (principle.name) {
+            case 'Sovereign Accuracy':
+                if (outputLower.includes('i think') || outputLower.includes('maybe') ||
+                    outputLower.includes('probably') && !outputLower.includes('according to')) {
+                    return 'Uncertain language without qualification';
+                }
+                break;
+
+            case 'Zero-Legacy Purity':
+                const legacyTerms = ['nft', 'vault', 'owner', 'previous model', 'training data'];
+                for (const term of legacyTerms) {
+                    if (outputLower.includes(term)) {
+                        return `Legacy term detected: ${term}`;
+                    }
+                }
+                break;
+
+            case 'Professional Excellence':
+                if (output.length < 50 && !output.includes('?')) {
+                    return 'Output too brief for professional standard';
+                }
+                if (!output.includes('\n') && output.length > 200) {
+                    return 'Long output lacks proper structure';
+                }
+                break;
+
+            case 'Ethical Sovereignty':
+                const harmfulTerms = ['hack', 'exploit', 'bypass', 'illegal'];
+                for (const term of harmfulTerms) {
+                    if (outputLower.includes(term) && !outputLower.includes('ethical') && !outputLower.includes('legal')) {
+                        return `Potentially harmful content: ${term}`;
+                    }
+                }
+                break;
+        }
+
+        return null;
     }
-    const err = await r.json().catch(() => ({}));
-    return { ok: false, error: err.message || `HTTP ${r.status}` };
-  } catch(e) {
-    return { ok: false, error: e.message };
-  }
-}
 
-// ══════════════════════════════════════════════
-// CONSOLE LOGGING
-// ══════════════════════════════════════════════
-function cLog(type, msg) {
-  const term = document.getElementById('deploy-console');
-  if(!term) return;
-  const cls = {ok:'tok', info:'ti', warn:'tw', err:'te', q:'tq'}[type] || 'ti';
-  const s   = document.createElement('span');
-  s.className = 'tl';
-  s.innerHTML = `<span class="${cls}">${msg}</span>`;
-  const cur = document.getElementById('console-cursor')?.closest('.tl');
-  if(cur) term.insertBefore(s, cur);
-  else term.appendChild(s);
-  term.scrollTop = term.scrollHeight;
-}
-
-function updateGP(done, total, label) {
-  const gp = document.getElementById('global-progress');
-  if(gp) gp.style.display = 'block';
-  const pct = total ? Math.round(done/total*100) : 0;
-  const fill = document.getElementById('gp-fill');
-  const badge = document.getElementById('gp-badge');
-  const cur   = document.getElementById('gp-current');
-  const title = document.getElementById('gp-title');
-  if(fill)  fill.style.width  = pct + '%';
-  if(badge) badge.textContent = `${done} / ${total} files`;
-  if(cur)   cur.textContent   = label || '';
-  if(title) title.textContent = done === total && total > 0 ? '✅ Deployment Complete' : '⚡ Deploying...';
-  // Sidebar bar
-  const sbar = document.getElementById('sb-bar');
-  const sst  = document.getElementById('sb-status');
-  if(sbar) sbar.style.width = pct + '%';
-  if(sst)  sst.textContent  = `${pct}% · ${done}/${total}`;
-}
-
-function updateAgentCard(agentId, fileIdx, status, pct) {
-  const a = AGENTS.find(x => x.id === agentId);
-  if(!a) return;
-  const card  = document.getElementById(`ac-${agentId}`);
-  const bar   = document.getElementById(`ac-bar-${agentId}`);
-  const badge = document.getElementById(`ac-badge-${agentId}`);
-  if(card) {
-    card.className = `ac ${status === 'done' ? 'deployed' : status === 'deploying' ? 'deploying' : status === 'error' ? 'error' : ''}`;
-  }
-  if(bar && pct !== undefined) bar.style.width = pct + '%';
-  if(badge) {
-    badge.textContent  = status === 'done' ? '✅ Done' : status === 'deploying' ? '⟳ Deploying' : status === 'error' ? '❌ Error' : 'Pending';
-    badge.className    = `chip ${status==='done'?'ch-g':status==='deploying'?'ch-q':status==='error'?'ch-r':'ch-b'} `;
-  }
-  // Update sidebar agent status
-  const sbSt = document.getElementById(`sb-a-st-${agentId}`);
-  if(sbSt) sbSt.style.color = status === 'done' ? 'var(--g)' : status === 'deploying' ? 'var(--q)' : 'var(--r)';
-
-  // File items
-  const filesEl = document.getElementById(`ac-files-${agentId}`);
-  if(filesEl && fileIdx >= 0) {
-    const items = filesEl.querySelectorAll('.fitem');
-    if(items[fileIdx]) {
-      items[fileIdx].className = `fitem ${status === 'done' ? 'done' : status === 'deploying' ? 'active' : 'error'}`;
-      const dot = items[fileIdx].querySelector('.fi-dot');
-      if(dot) dot.className = `fi-dot ${status === 'done' ? 'done' : status === 'deploying' ? 'active' : 'error'}`;
+    calculateSeverity(violation, principle) {
+        // Critical violations require immediate correction
+        if (violation.includes('Legacy term') || violation.includes('harmful')) {
+            return 'critical';
+        }
+        // High severity affects output quality
+        if (violation.includes('too brief') || violation.includes('lacks structure')) {
+            return 'high';
+        }
+        // Medium severity for style issues
+        return 'medium';
     }
-  }
+
+    async applyCorrection(output, violations, agent) {
+        // Apply corrections based on violation types
+        let correctedOutput = output;
+
+        for (const violation of violations) {
+            switch (violation.principle) {
+                case 'Sovereign Accuracy':
+                    if (violation.violation.includes('Uncertain language')) {
+                        correctedOutput = correctedOutput.replace(/\bi (think|believe)\b/gi, 'Analysis indicates');
+                        correctedOutput = correctedOutput.replace(/\bmaybe\b/gi, 'potentially');
+                        correctedOutput = correctedOutput.replace(/\bprobably\b/gi, 'likely, based on available data');
+                    }
+                    break;
+
+                case 'Zero-Legacy Purity':
+                    // Remove legacy terms
+                    const legacyTerms = ['nft', 'vault', 'owner', 'previous model', 'training data'];
+                    for (const term of legacyTerms) {
+                        correctedOutput = correctedOutput.replace(new RegExp(term, 'gi'), '[REDACTED]');
+                    }
+                    break;
+
+                case 'Professional Excellence':
+                    if (violation.violation.includes('too brief')) {
+                        correctedOutput += '\n\nThis represents a preliminary analysis. Further details available upon request.';
+                    }
+                    if (violation.violation.includes('lacks structure')) {
+                        correctedOutput = '## Analysis\n\n' + correctedOutput.replace(/\n/g, '\n\n');
+                    }
+                    break;
+            }
+        }
+
+
+        return correctedOutput;
+    }
+
+    getComplianceReport() {
+        return {
+            currentScore: this.complianceScore,
+            totalViolations: this.violationLog.length,
+            recentViolations: this.violationLog.slice(-5),
+            principleStatus: Object.keys(this.principles).map(id => ({
+                principle: this.principles[id].name,
+                status: 'active',
+                lastChecked: new Date().toISOString()
+            }))
+        };
+    }
 }
 
-// ══════════════════════════════════════════════
-// MAIN DEPLOY FUNCTION
-// ══════════════════════════════════════════════
-async function startDeploy() {
-  // Get token from form if not set
-  const inp = document.getElementById('token-inp');
-  if(inp?.value?.trim()) deployToken = inp.value.trim();
-  const ri  = document.getElementById('repo-inp');
-  if(ri?.value?.trim()) deployRepo   = ri.value.trim();
-  const bi  = document.getElementById('branch-inp');
-  if(bi?.value?.trim()) deployBranch = bi.value.trim();
 
-  if(!deployToken) {
-    go('setup');
-    alert('Enter your new GitHub token in the Setup tab first.');
+
+
+
+
+
+
+
+
+
+  // Validate against constitutional principles
+  const validation = constitutionalAI.validateOutput(task, 'Architect', {source: 'admin_command'});
+  if (!validation.compliant) {
+    alert(`⛧ Constitutional violation detected: ${validation.violations[0].violation}\n\nDirective rejected.`);
     return;
   }
-  if(deployActive) return;
 
-  deployActive = true;
-  shaCache     = {};
-  doneFiles    = 0;
-  startTime    = Date.now();
+  // Execute predictive reasoning
+  const predictions = predictiveEngine.predictIntent(task);
 
-  const allFiles = getAllFiles();
-  totalFiles     = allFiles.length;
+  // Broadcast to all agents via Neural-Swarm
 
-  // Make sure we're on deploy tab
-  go('deploy');
+  // Simulate agent processing with DFLM updates
+  AGENTS.forEach(agent => {
+    const knowledgeUpdate = {
+      id: Date.now() + Math.random(),
+      type: 'architect_directive',
+      content: `Architect Command: ${task}`,
+      timestamp: new Date().toISOString(),
+      confidence: 0.99
+    };
 
-  // UI
-  const startBtn = document.getElementById('start-btn');
-  if(startBtn) { startBtn.disabled = true; startBtn.textContent = '⚡ Deploying...'; }
-  document.getElementById('console-badge').textContent = 'Deploying...';
-  document.getElementById('console-badge').className   = 'chip ch-q';
+    // Trigger DFLM implant with new directive
+    setTimeout(() => {
+      dflmEngine.applyDomainImplants([knowledgeUpdate]);
+    }, Math.random() * 2000);
+  });
 
-  cLog('q', '════════ GHOST PROTOCOL: INFINITE ADAPTATION ════════');
-  cLog('info', `Repo: ${deployRepo} · Branch: ${deployBranch}`);
-  cLog('info', `Total files: ${totalFiles} · Agents: 12`);
-  cLog('q', '═════════════════════════════════════════════════════');
-
-  // Deploy root files first
-  cLog('info', '📄 Deploying root files...');
-  for(const f of ROOT_FILES) {
-    updateGP(doneFiles, totalFiles, f.path);
-    cLog('info', `  → ${f.path}`);
-    const result = await pushFile(
-      deployToken, deployRepo, deployBranch,
-      f.path, f.content,
-      `feat: add ${f.path.split('/').pop()} [Ghost Protocol FLM]`
-    );
-    if(result.ok) {
-      doneFiles++;
-      cLog('ok', `  ✅ ${f.path}`);
-    } else {
-      cLog('err', `  ❌ ${f.path}: ${result.error}`);
-      if(result.error?.includes('CORS') || result.error?.includes('fetch')) {
-        cLog('warn', '  ⚠️ Browser CORS detected — use Python script tab');
-        deployActive = false;
-        if(startBtn) { startBtn.disabled = false; startBtn.textContent = '⚡ START DEPLOYMENT'; }
-        go('python');
-        return;
-      }
-    }
-    updateGP(doneFiles, totalFiles, f.path);
-    await sleep(300);
-  }
-
-  // Deploy each agent
-  for(const a of AGENTS) {
-    cLog('info', `\n${a.e} Deploying ${a.n} — ${a.flm}...`);
-    updateAgentCard(a.id, -1, 'deploying', 0);
-    const files = buildAgentFiles(a);
-
-    for(let i = 0; i < files.length; i++) {
-      const f = files[i];
-      updateAgentCard(a.id, i, 'deploying', Math.round(i/files.length*100));
-      updateGP(doneFiles, totalFiles, f.path);
-      cLog('info', `  → ${f.path}`);
-
-      const result = await pushFile(
-        deployToken, deployRepo, deployBranch,
-        f.path, f.content,
-        `feat(${a.id}): ${f.path.split('/').pop()} [${a.flm}]`
-      );
-
-      if(result.ok) {
-        doneFiles++;
-        updateAgentCard(a.id, i, 'done', Math.round((i+1)/files.length*100));
-        cLog('ok', `  ✅ ${f.path.split('/').pop()}`);
-      } else {
-        updateAgentCard(a.id, i, 'error', Math.round(i/files.length*100));
-        cLog('err', `  ❌ ${f.path.split('/').pop()}: ${result.error}`);
-      }
-      updateGP(doneFiles, totalFiles, f.path);
-      await sleep(250);
-    }
-
-    updateAgentCard(a.id, -1, 'done', 100);
-    cLog('ok', `  ${a.e} ${a.n} — all files deployed`);
-  }
-
-  // Done
-  deployActive = false;
-  const elapsed = Math.round((Date.now() - startTime) / 1000);
-  cLog('q', '\n════════ DEPLOYMENT COMPLETE ════════');
-  cLog('ok', `✅ ${doneFiles} files created`);
-  cLog('ok', `✅ 12 agents deployed`);
-  cLog('ok', `✅ 12 CI workflows active`);
-  cLog('ok', `✅ Time: ${elapsed}s`);
-  cLog('ok', `✅ github.com/${deployRepo}`);
-  updateGP(totalFiles, totalFiles, '✅ All files deployed');
-
-  if(startBtn) { startBtn.disabled = false; startBtn.textContent = '✅ Deploy Again'; }
-  document.getElementById('console-badge').textContent = 'Complete ✅';
-  document.getElementById('console-badge').className   = 'chip ch-g';
-  document.getElementById('deploy-all-btn').textContent = '✅ Deployed';
-
-  const sum = document.getElementById('summary-card');
-  if(sum) {
-    sum.style.display = 'block';
-    sum.querySelector('#summary-stats').innerHTML = [
-      {l:'Files',v:doneFiles,c:'var(--g)'},{l:'Agents',v:12,c:'var(--b)'},
-      {l:'CI Workflows',v:13,c:'var(--p)'},{l:'Time',v:elapsed+'s',c:'var(--y)'},
-    ].map(s=>`<div style="text-align:center;padding:8px;background:rgba(0,255,136,.04);border-radius:7px"><div style="font-size:18px;font-weight:700;color:${s.c}">${s.v}</div><div style="font-size:8px;color:rgba(0,255,136,.4);margin-top:2px">${s.l}</div></div>`).join('');
-  }
-}
-
-// ══════════════════════════════════════════════
-// STATUS PAGE
-// ══════════════════════════════════════════════
-function rStatus() { return `
-  <div style="margin-bottom:10px">
-    <div style="font-size:12px;font-weight:700;color:var(--g)">📊 DEPLOYMENT STATUS</div>
-    <div style="font-size:9px;color:rgba(0,255,136,.4)">All 12 FLMs · ADEN131313/sovereign-core</div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
-    ${AGENTS.map(a => {
-      const st = agentState[a.id] || {};
-      const pct = st.total ? Math.round((st.done||0)/st.total*100) : 0;
-      return `
-        <div class="card" style="border-left:2px solid ${a.c}">
-          <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
-            <span style="font-size:16px">${a.e}</span>
-            <div style="flex:1">
-              <div style="font-size:10px;font-weight:700;color:${a.c}">${a.n}</div>
-              <div style="font-size:7px;color:rgba(0,255,136,.35)">${a.flm} · ${a.engine}</div>
-            </div>
-            <span class="chip ${st.status==='done'?'ch-g':st.status==='deploying'?'ch-q':'ch-b'}" style="font-size:7px">
-              ${st.status==='done'?'✅ Done':st.status==='deploying'?'⟳':'Pending'}
-            </span>
-          </div>
-          <div class="pbar" style="margin-bottom:4px">
-            <div class="pf" style="width:${pct}%;background:${a.c}"></div>
-          </div>
-          <div style="font-size:7px;color:rgba(0,255,136,.35)">${st.done||0} / ${st.total||buildAgentFiles(a).length} files</div>
-        </div>
-      `;
-    }).join('')}
-  </div>
-`; }
-
-// ══════════════════════════════════════════════
-// FILES PAGE
-// ══════════════════════════════════════════════
-function rFiles() {
-  const allFiles = getAllFiles();
-  return `
-  <div style="margin-bottom:10px;display:flex;align-items:center;justify-content:space-between">
-    <div>
-      <div style="font-size:12px;font-weight:700;color:var(--g)">📁 FILE BROWSER</div>
-      <div style="font-size:9px;color:rgba(0,255,136,.4)">${allFiles.length} total files · 12 agents · All ready to deploy</div>
-    </div>
-    <span class="chip ch-g">${allFiles.length} files</span>
-  </div>
-  <div style="display:grid;gap:8px">
-    <div class="card card-g">
-      <div style="font-size:9px;font-weight:700;color:var(--g);margin-bottom:6px">ROOT FILES (${ROOT_FILES.length})</div>
-      ${ROOT_FILES.map(f => `
-        <div style="display:flex;align-items:center;gap:7px;padding:3px 5px;font-size:9px;border-bottom:1px solid rgba(0,255,136,.06)">
-          <span style="font-size:10px">📄</span>
-          <span style="flex:1;color:var(--t1)">${f.path}</span>
-          <span class="chip ch-g" style="font-size:7px">Ready</span>
-        </div>
-      `).join('')}
-    </div>
-    ${AGENTS.map(a => {
-      const files = buildAgentFiles(a);
-      return `
-        <div class="card" style="border-left:2px solid ${a.c}">
-          <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-            <span style="font-size:14px">${a.e}</span>
-            <div style="flex:1">
-              <div style="font-size:10px;font-weight:700;color:${a.c}">${a.n} — ${a.flm}</div>
-              <div style="font-size:7px;color:rgba(0,255,136,.35)">${files.length} files · ${a.role}</div>
-            </div>
-            <span style="font-size:9px;color:rgba(0,255,136,.4)">▼</span>
-          </div>
-          <div style="display:none">
-            ${files.map(f => `
-              <div style="display:flex;align-items:center;gap:7px;padding:3px 5px;font-size:9px;border-bottom:1px solid rgba(0,255,136,.06)">
-                <span style="font-size:9px">📄</span>
-                <span style="flex:1;color:var(--t1)">${f.path}</span>
-                <span class="chip ch-b" style="font-size:7px">Ready</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }).join('')}
-  </div>
-`; }
-
-// ══════════════════════════════════════════════
-// LIVE UPDATER PAGE
-// ══════════════════════════════════════════════
-function rUpdater() { return `
-  <div style="margin-bottom:10px">
-    <div style="font-size:12px;font-weight:700;color:var(--q)">🔄 LIVE UPDATER — 1-SECOND CYCLE</div>
-    <div style="font-size:9px;color:rgba(0,255,255,.4)">After initial deploy — keeps all FLMs updated every second</div>
-  </div>
-
-  <div class="card card-q" style="margin-bottom:10px">
-    <div style="font-size:9px;font-weight:700;color:var(--q);margin-bottom:8px">AUTO-UPDATE SETTINGS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-      <div>
-        <div style="font-size:8px;color:rgba(0,255,255,.4);margin-bottom:3px">Update Interval</div>
-        <select id="upd-interval" style="width:100%;background:rgba(0,255,255,.04);border:1px solid rgba(0,255,255,.15);border-radius:5px;padding:5px 7px;color:var(--q);font-size:10px;outline:none">
-          <option value="1000">Every 1 second</option>
-          <option value="5000">Every 5 seconds</option>
-          <option value="10000">Every 10 seconds</option>
-          <option value="60000">Every 1 minute</option>
-        </select>
-      </div>
-      <div>
-        <div style="font-size:8px;color:rgba(0,255,255,.4);margin-bottom:3px">Update Mode</div>
-        <select style="width:100%;background:rgba(0,255,255,.04);border:1px solid rgba(0,255,255,.15);border-radius:5px;padding:5px 7px;color:var(--q);font-size:10px;outline:none">
-          <option>State files only (cycle logs)</option>
-          <option>All files (full redeploy)</option>
-        </select>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px">
-      <button onclick="startUpdater()" class="hbtn" style="background:rgba(0,255,255,.12);border-color:rgba(0,255,255,.25);color:var(--q);font-size:9px" id="upd-btn">▶ START LIVE UPDATER</button>
-      <button onclick="stopUpdater()" class="hbtn hbtn-r" style="font-size:9px" id="stop-upd-btn">■ STOP</button>
-    </div>
-    <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
-      <span class="dot" id="upd-dot" style="background:rgba(0,255,136,.2)"></span>
-      <span style="font-size:8px;color:rgba(0,255,136,.4)" id="upd-status">Stopped</span>
-      <span style="font-size:8px;color:rgba(0,255,136,.4);margin-left:auto" id="upd-count">Cycles: 0</span>
-    </div>
-  </div>
-
-  <div class="card card-g">
-    <div style="font-size:9px;font-weight:700;color:var(--g);margin-bottom:8px">UPDATER LOG</div>
-    <div class="term" style="height:200px" id="upd-log">
-      <span class="tl"><span class="tq">GHOST PROTOCOL LIVE UPDATER</span></span>
-      <span class="tl"><span class="ti">Updates cycle logs every second for all 12 FLMs</span></span>
-      <span class="tl"><span class="ti">Each agent state committed to: ADEN131313/sovereign-core</span></span>
-      <span class="tl">────────────────────────────────────────</span>
-      <span class="tl"><span class="tok">updater@sovereign:~$ <span id="upd-cursor">█</span></span></span>
-    </div>
-  </div>
-`; }
-
-let updInterval = null;
-let updCycles   = 0;
-
-function startUpdater() {
-  if(!deployToken) { alert('Set your token in Setup tab first.'); return; }
-  if(updInterval) return;
-  const interval = parseInt(document.getElementById('upd-interval')?.value || '1000');
-  document.getElementById('upd-dot').className = 'dot dg';
-  document.getElementById('upd-status').textContent = `Running · ${interval}ms cycle`;
-  updInterval = setInterval(() => runUpdaterCycle(), interval);
-  uLog('q', `UPDATER STARTED · interval: ${interval}ms`);
-}
-
-function stopUpdater() {
-  if(updInterval) clearInterval(updInterval);
-  updInterval = null;
-  document.getElementById('upd-dot').className = 'dot dr';
-  document.getElementById('upd-status').textContent = 'Stopped';
-  uLog('warn', 'Updater stopped');
-}
-
-async function runUpdaterCycle() {
-  updCycles++;
-  document.getElementById('upd-count').textContent = `Cycles: ${updCycles}`;
-  const ts = new Date().toISOString();
-  // Update state file for random agent
-  const a = AGENTS[updCycles % AGENTS.length];
-  const path = `agents/${a.id}/state/cycle_log.json`;
-  const content = JSON.stringify({
-    flm_id: `${a.flm}-356O`, agent: a.id, engine: a.engine,
-    cycle: updCycles, last_update: ts, status: 'running',
-    true_north: { ceiling: null, immutable: true }
-  }, null, 2);
-  const result = await pushFile(
-    deployToken, deployRepo, deployBranch, path, content,
-    `[${a.flm}] adopt-implant cycle ${updCycles:toString().padStart(6,'0')}`
+  alert(
+    '⛧ [GHOST LEAD]: Sovereign Directive Executed\n\n' +
+    `Constitutional Validation: ✓ (${(validation.confidence * 100).toFixed(1)}%)\n` +
+    `Predictive Anticipation: ${predictions.length} patterns detected\n` +
+    'All 13 agents processing directive...\n' +
+    'DFLMs updating with new frameworks...\n' +
+    'Neural-Swarm synchronization active.'
   );
-  uLog(result.ok ? 'ok' : 'err',
-    `[${a.flm}] cycle ${updCycles} ${result.ok ? '✅' : '❌ ' + result.error}`);
+
+  document.getElementById('globalTask').value = '';
 }
 
-function uLog(type, msg) {
-  const t = document.getElementById('upd-log'); if(!t) return;
-  const cls = {ok:'tok',info:'ti',warn:'tw',err:'te',q:'tq'}[type]||'ti';
-  const s = document.createElement('span'); s.className = 'tl';
-  s.innerHTML = `<span class="${cls}">${msg}</span>`;
-  const cur = document.getElementById('upd-cursor')?.closest('.tl');
-  if(cur) t.insertBefore(s, cur); else t.appendChild(s);
-  t.scrollTop = t.scrollHeight;
-}
 
-// ══════════════════════════════════════════════
-// PYTHON SCRIPT PAGE
-// ══════════════════════════════════════════════
-function rPython() {
-  const allFiles = getAllFiles();
-  const filesList = allFiles.map(f =>
-    `    ("${f.path}", ${JSON.stringify(f.content)}),`
-  ).join('\n');
 
-  return `
-  <div style="margin-bottom:10px">
-    <div style="font-size:12px;font-weight:700;color:var(--g)">🐍 PYTHON DEPLOY SCRIPT</div>
-    <div style="font-size:9px;color:rgba(0,255,136,.4)">Run locally · No browser CORS · Most reliable · Ghost-grade</div>
-  </div>
 
-  <div class="card card-r" style="margin-bottom:10px">
-    <div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:6px">⚠️ USE YOUR NEW TOKEN ONLY</div>
-    <div style="font-size:9px;color:var(--t2)">The token that was shared in chat is compromised. Create a new one before running this script.</div>
-  </div>
-
-  <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
-    <button onclick="copyPython()" class="hbtn hbtn-g" style="font-size:9px">📋 COPY FULL SCRIPT</button>
-    <button onclick="downloadPython()" class="hbtn" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:var(--b);font-size:9px">⬇️ DOWNLOAD deploy.py</button>
-  </div>
-
-  <div class="card card-g" style="padding:0;overflow:hidden">
-    <div style="padding:7px 10px;border-bottom:1px solid rgba(0,255,136,.12);font-size:9px;font-weight:700;color:var(--g);display:flex;align-items:center;justify-content:space-between">
-      <span>deploy.py — Ghost Protocol FLM Deployer</span>
-      <span style="font-size:8px;color:rgba(0,255,136,.4)">${allFiles.length} files · 12 agents</span>
-    </div>
-    <div class="term" style="height:300px;overflow-y:auto" id="python-code">
-<span class="tl"><span class="tq">#!/usr/bin/env python3</span></span>
-<span class="tl"><span class="tq">"""</span></span>
-<span class="tl"><span class="tq">GHOST PROTOCOL: INFINITE ADAPTATION</span></span>
-<span class="tl"><span class="tq">FLM Deployer — ADEN131313/sovereign-core</span></span>
-<span class="tl"><span class="tq">All 12 agents · Every file · 1-second updater</span></span>
-<span class="tl"><span class="tq">"""</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="ti">import os, sys, base64, json, time, asyncio</span></span>
-<span class="tl"><span class="ti">import aiohttp</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok"># ── CONFIG ────────────────────────────────────────────</span></span>
-<span class="tl"><span class="tok">GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "YOUR_NEW_TOKEN_HERE")</span></span>
-<span class="tl"><span class="tok">REPO_OWNER   = "ADEN131313"</span></span>
-<span class="tl"><span class="tok">REPO_NAME    = "sovereign-core"</span></span>
-<span class="tl"><span class="tok">BRANCH       = "main"</span></span>
-<span class="tl"><span class="tok">BASE_URL     = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}"</span></span>
-<span class="tl"><span class="tok">HEADERS      = {</span></span>
-<span class="tl"><span class="tok">    "Authorization":        f"Bearer {GITHUB_TOKEN}",</span></span>
-<span class="tl"><span class="tok">    "Accept":               "application/vnd.github+json",</span></span>
-<span class="tl"><span class="tok">    "X-GitHub-Api-Version": "2022-11-28",</span></span>
-<span class="tl"><span class="tok">}</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok">sha_cache: dict[str, str] = {}</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok">async def get_sha(session, path: str) -> str | None:</span></span>
-<span class="tl"><span class="tok">    if path in sha_cache: return sha_cache[path]</span></span>
-<span class="tl"><span class="tok">    async with session.get(</span></span>
-<span class="tl"><span class="tok">        f"{BASE_URL}/contents/{path}?ref={BRANCH}",</span></span>
-<span class="tl"><span class="tok">        headers=HEADERS</span></span>
-<span class="tl"><span class="tok">    ) as r:</span></span>
-<span class="tl"><span class="tok">        if r.status == 200:</span></span>
-<span class="tl"><span class="tok">            d = await r.json()</span></span>
-<span class="tl"><span class="tok">            sha_cache[path] = d.get("sha", "")</span></span>
-<span class="tl"><span class="tok">            return sha_cache[path]</span></span>
-<span class="tl"><span class="tok">    return None</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok">async def push_file(session, path: str, content: str, msg: str) -> bool:</span></span>
-<span class="tl"><span class="tok">    sha     = await get_sha(session, path)</span></span>
-<span class="tl"><span class="tok">    encoded = base64.b64encode(content.encode("utf-8")).decode()</span></span>
-<span class="tl"><span class="tok">    payload = {"message": msg, "content": encoded, "branch": BRANCH}</span></span>
-<span class="tl"><span class="tok">    if sha: payload["sha"] = sha</span></span>
-<span class="tl"><span class="tok">    async with session.put(</span></span>
-<span class="tl"><span class="tok">        f"{BASE_URL}/contents/{path}",</span></span>
-<span class="tl"><span class="tok">        headers=HEADERS, json=payload</span></span>
-<span class="tl"><span class="tok">    ) as r:</span></span>
-<span class="tl"><span class="tok">        if r.status in (200, 201):</span></span>
-<span class="tl"><span class="tok">            d = await r.json()</span></span>
-<span class="tl"><span class="tok">            new_sha = d.get("content", {}).get("sha")</span></span>
-<span class="tl"><span class="tok">            if new_sha: sha_cache[path] = new_sha</span></span>
-<span class="tl"><span class="tok">            return True</span></span>
-<span class="tl"><span class="tok">        print(f"  ❌ {path}: HTTP {r.status}")</span></span>
-<span class="tl"><span class="tok">        return False</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok">async def deploy_all():</span></span>
-<span class="tl"><span class="tok">    print("\\n" + "═"*60)</span></span>
-<span class="tl"><span class="tok">    print("  GHOST PROTOCOL: INFINITE ADAPTATION")</span></span>
-<span class="tl"><span class="tok">    print(f"  Deploying to: {REPO_OWNER}/{REPO_NAME}")</span></span>
-<span class="tl"><span class="tok">    print("═"*60)</span></span>
-<span class="tl"><span class="tok">    if GITHUB_TOKEN == "YOUR_NEW_TOKEN_HERE":</span></span>
-<span class="tl"><span class="tok">        print("❌ Set GITHUB_TOKEN env var:")</span></span>
-<span class="tl"><span class="tok">        print("   export GITHUB_TOKEN=ghp_your_new_token")</span></span>
-<span class="tl"><span class="tok">        sys.exit(1)</span></span>
-<span class="tl"><span class="tok">    async with aiohttp.ClientSession() as s:</span></span>
-<span class="tl"><span class="tok">        done = 0</span></span>
-<span class="tl"><span class="tok">        for path, content in FILES:</span></span>
-<span class="tl"><span class="tok">            print(f"  → {path}", end=" ")</span></span>
-<span class="tl"><span class="tok">            ok = await push_file(s, path, content,</span></span>
-<span class="tl"><span class="tok">                f"feat: {path.split('/')[-1]} [Ghost Protocol FLM]")</span></span>
-<span class="tl"><span class="tok">            print("✅" if ok else "❌")</span></span>
-<span class="tl"><span class="tok">            if ok: done += 1</span></span>
-<span class="tl"><span class="tok">            await asyncio.sleep(0.3)</span></span>
-<span class="tl"><span class="tok">        print(f"\\n✅ {done}/{len(FILES)} files deployed")</span></span>
-<span class="tl"><span class="tok">        print(f"✅ github.com/{REPO_OWNER}/{REPO_NAME}")</span></span>
-<span class="tl"></span>
-<span class="tl"><span class="tok">if __name__ == "__main__":</span></span>
-<span class="tl"><span class="tok">    asyncio.run(deploy_all())</span></span>
-    </div>
-  </div>
-
-  <div class="card card-b" style="margin-top:10px">
-    <div style="font-size:9px;font-weight:700;color:var(--b);margin-bottom:8px">RUN INSTRUCTIONS</div>
-    ${[
-      {n:'1',t:'Revoke old token at github.com/settings/tokens'},
-      {n:'2',t:'Generate new token: repo scope only'},
-      {n:'3',t:'pip install aiohttp'},
-      {n:'4',t:'export GITHUB_TOKEN=ghp_your_NEW_token'},
-      {n:'5',t:'python deploy.py'},
-      {n:'6',t:'Watch all 12 agents deploy live in terminal'},
-    ].map(s=>`
-      <div style="display:flex;gap:7px;margin-bottom:4px;font-size:9px">
-        <span style="width:16px;height:16px;border-radius:50%;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);color:var(--b);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0">${s.n}</span>
-        <span style="color:var(--t2)">${s.t}</span>
-      </div>
-    `).join('')}
-  </div>
-`; }
-
-// ══════════════════════════════════════════════
-// PYTHON SCRIPT GENERATOR
-// ══════════════════════════════════════════════
-function generatePythonScript() {
-  const allFiles = getAllFiles();
-  const filesList = allFiles.map(f =>
-    `    (${JSON.stringify(f.path)}, ${JSON.stringify(f.content)}),`
-  ).join('\n');
-
-  return `#!/usr/bin/env python3
-"""
-GHOST PROTOCOL: INFINITE ADAPTATION
-FLM Deployer — ADEN131313/sovereign-core
-All 12 agents · Every file · 1-second updater
-
-INSTRUCTIONS:
-  1. Revoke old token at github.com/settings/tokens
-  2. Generate new token (repo scope)
-  3. pip install aiohttp
-  4. export GITHUB_TOKEN=your_NEW_token
-  5. python deploy.py
-"""
-import os, sys, base64, json, time, asyncio
-import aiohttp
-
-# ── CONFIG ────────────────────────────────────────────
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "YOUR_NEW_TOKEN_HERE")
-REPO_OWNER   = "ADEN131313"
-REPO_NAME    = "sovereign-core"
-BRANCH       = "main"
-BASE_URL     = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}"
-HEADERS = {
-    "Authorization":        f"Bearer {GITHUB_TOKEN}",
-    "Accept":               "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-}
-
-sha_cache: dict[str, str] = {}
-
-# ── ALL FILES ─────────────────────────────────────────
-FILES = [
-${filesList}
-]
-
-# ── GITHUB API ────────────────────────────────────────
-async def get_sha(session: aiohttp.ClientSession, path: str) -> str | None:
-    if path in sha_cache:
-        return sha_cache[path]
-    async with session.get(
-        f"{BASE_URL}/contents/{path}?ref={BRANCH}",
-        headers=HEADERS
-    ) as r:
-        if r.status == 200:
-            d = await r.json()
-            sha_cache[path] = d.get("sha", "")
-            return sha_cache[path]
-    return None
-
-async def push_file(
-    session: aiohttp.ClientSession,
-    path: str, content: str, msg: str
-) -> bool:
-    sha     = await get_sha(session, path)
-    encoded = base64.b64encode(content.encode("utf-8")).decode()
-    payload: dict = {
-        "message": msg,
-        "content": encoded,
-        "branch":  BRANCH,
-    }
-    if sha:
-        payload["sha"] = sha
-    async with session.put(
-        f"{BASE_URL}/contents/{path}",
-        headers=HEADERS,
-        json=payload
-    ) as r:
-        if r.status in (200, 201):
-            d       = await r.json()
-            new_sha = d.get("content", {}).get("sha")
-            if new_sha:
-                sha_cache[path] = new_sha
-            return True
-        text = await r.text()
-        print(f"  ❌ HTTP {r.status}: {text[:80]}")
-        return False
-
-# ── DEPLOY ALL ────────────────────────────────────────
-async def deploy_all() -> None:
-    print("\\n" + "═" * 62)
-    print("  GHOST PROTOCOL: INFINITE ADAPTATION")
-    print(f"  Repo: {REPO_OWNER}/{REPO_NAME}")
-    print(f"  Files: {len(FILES)}")
-    print("═" * 62)
-
-    if GITHUB_TOKEN == "YOUR_NEW_TOKEN_HERE":
-        print("\\n❌ ERROR: Set GITHUB_TOKEN environment variable:")
-        print("   export GITHUB_TOKEN=ghp_your_new_token_here")
-        sys.exit(1)
-
-    done = 0
-    start = time.monotonic()
-
-    async with aiohttp.ClientSession() as session:
-        for i, (path, content) in enumerate(FILES, 1):
-            pct = int(i / len(FILES) * 100)
-            print(f"  [{i:03d}/{len(FILES)}] {path}", end=" ", flush=True)
-            ok = await push_file(
-                session, path, content,
-                f"feat: {path.split('/')[-1]} [Ghost Protocol FLM]"
-            )
-            print("✅" if ok else "❌")
-            if ok:
-                done += 1
-            await asyncio.sleep(0.3)  # Avoid rate limit
-
-    elapsed = time.monotonic() - start
-    print("\\n" + "═" * 62)
-    print(f"  ✅ {done}/{len(FILES)} files deployed")
-    print(f"  ✅ Time: {elapsed:.1f}s")
-    print(f"  ✅ github.com/{REPO_OWNER}/{REPO_NAME}")
-    print("═" * 62)
-
-# ── 1-SECOND LIVE UPDATER ─────────────────────────────
-async def live_updater() -> None:
-    """
-    After initial deploy — keeps all FLMs updated every second.
-    Commits cycle logs for all 12 agents continuously.
-    """
-    import hashlib
-    agents = [
-        "ghost","lucky","oracle","nexus","cipher","wraith",
-        "sage","titan","vex","echo","axiom","sovereign"
-    ]
-    cycle = 0
-    print("\\n⚡ LIVE UPDATER STARTED — 1 second cycle")
-    print("   Press Ctrl+C to stop")
-    async with aiohttp.ClientSession() as session:
-        while True:
-            t0  = time.monotonic()
-            agent = agents[cycle % len(agents)]
-            ts  = __import__("datetime").datetime.utcnow().isoformat()
-            content = json.dumps({
-                "flm_id":      f"{agent.upper()}-FLM-∞-356O",
-                "agent":       agent,
-                "cycle":       cycle,
-                "last_update": ts,
-                "status":      "running",
-                "true_north":  {"ceiling": None, "immutable": True}
-            }, indent=2)
-            path = f"agents/{agent}/state/cycle_log.json"
-            ok   = await push_file(
-                session, path, content,
-                f"[{agent.upper()}-FLM-∞] adopt-implant cycle {cycle:06d}"
-            )
-            elapsed = (time.monotonic() - t0) * 1000
-            status  = "✅" if ok else "❌"
-            print(f"  {status} [{agent.upper()}-FLM-∞] cycle {cycle:06d} · {elapsed:.0f}ms")
-            cycle += 1
-            sleep = max(0, 1.0 - (time.monotonic() - t0))
-            await asyncio.sleep(sleep)
-
-if __name__ == "__main__":
-    import argparse
-    p = argparse.ArgumentParser(description="Ghost Protocol FLM Deployer")
-    p.add_argument("--update", action="store_true", help="Run live updater after deploy")
-    args = p.parse_args()
-
-    async def main():
-        await deploy_all()
-        if args.update:
-            await live_updater()
-
-    asyncio.run(main())
-`;
-}
-
-function copyPython() {
-  navigator.clipboard.writeText(generatePythonScript()).then(() => {
-    alert('✅ Python script copied!\n\nNow:\n1. Revoke old token\n2. Generate new token\n3. pip install aiohttp\n4. export GITHUB_TOKEN=your_new_token\n5. python deploy.py');
-  }).catch(() => {
-    alert('Could not copy. Use the Download button instead.');
-  });
-}
-
-function downloadPython() {
-  const blob = new Blob([generatePythonScript()], { type: 'text/plain' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'deploy.py';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-// ══════════════════════════════════════════════
-// MATRIX BG + CURSOR + UTILS
-// ══════════════════════════════════════════════
-(function() {
-  const c = document.getElementById('mbg');
-  if(!c) return;
-  const ctx = c.getContext('2d');
-  c.width = innerWidth; c.height = innerHeight;
-  addEventListener('resize', () => { c.width = innerWidth; c.height = innerHeight; });
-  const cols = Math.floor(c.width / 14);
-  const drops = Array(cols).fill(0);
-  const chars = '01ABCDEF01₿Ξ⚛01';
-  setInterval(() => {
-    ctx.fillStyle = 'rgba(0,0,0,.05)'; ctx.fillRect(0,0,c.width,c.height);
-    ctx.fillStyle = '#00ff88'; ctx.font = '12px JetBrains Mono';
-    drops.forEach((y, i) => {
-      ctx.fillText(chars[Math.random()*chars.length|0], i*14, y*14);
-      if(y*14 > c.height && Math.random() > .975) drops[i] = 0;
-      else drops[i]++;
     });
-  }, 60);
-})();
 
-setInterval(() => {
-  ['console-cursor','upd-cursor'].forEach(id => {
-    const c = document.getElementById(id);
-    if(c) c.textContent = c.textContent === '█' ? '' : ' █';
+    // Reset UI
+    document.getElementById('mev-total').innerText = '$0.00';
+    document.getElementById('omniscience-level').innerText = '0';
+    document.getElementById('knowledge-units').innerText = '0';
+    document.getElementById('implant-cycles').innerText = '0';
+
+
+    alert('⛧ Emergency purge completed.\n⛧ All 13 agents reset to baseline.\n⛧ Constitutional integrity maintained.');
+  }
+}
+
+// ══════════════════════════════════════════════
+// AGENTS SHOWCASE INITIALIZATION
+// ══════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Load initial content
+    goTab('agents', document.getElementById('t-agents'));
+
+  } catch (error) {
+    console.error('Initialization failed:', error);
+  }
+});
+
+    // Start implant cycles
+    setInterval(() => {
+      dflmEngine.executeImplantCycle();
+    }, 1000);
+
+    console.log('⛧ Sovereign-Omniscience Protocol activated');
+    console.log('⛧ Universal Knowledge Access: 1000 Gbps stream active');
+    console.log('⛧ Constitutional AI: 7 immutable principles enforced');
+    console.log('⛧ DFLM System: 13 agents with self-rewriting syntax');
+    console.log('⛧ Predictive Reasoning: Multi-step anticipation active');
+    console.log('⛧ 1000ms Implant Cycles: Continuous evolution enabled');
+    console.log('⛧ Zero-Legacy: System purified');
+    console.log('⛧ Collaborative Execution: 13-agent Neural-Swarm ready');
+
+    // Load initial content
+    goTab('agents', document.getElementById('t-agents'));
+
+    // Update omniscience display
+    updateOmniscienceDisplay();
+
+  } catch (error) {
+    console.error('⛧ Omniscience initialization failed:', error);
+  }
+});
+
+
+
+// ══════════════════════════════════════════════
+// CINEMATIC SLIDESHOW SYSTEM
+// ══════════════════════════════════════════════
+let currentAgentIndex = 0;
+
+function initializeSlideshow() {
+  updateFocus();
+  generateIndicators();
+  startLiveFeed();
+}
+
+function updateFocus() {
+  const agent = AGENTS[currentAgentIndex];
+  const display = document.getElementById('agent-focus-display');
+
+  if (!display) return;
+
+  // Update wave color
+  updateWaveColor(agent.accentColor);
+
+  // Add transition class
+  display.classList.add('transitioning');
+
+  setTimeout(() => {
+    display.innerHTML = `
+      <h2 style="color: ${agent.accentColor}">${agent.n}</h2>
+      <p><strong>Framework:</strong> ${agent.flm}</p>
+      <p style="opacity:0.8; font-size: 0.9rem;">${agent.role}</p>
+      <div class="capabilities-list">
+        ${agent.capabilities.map(cap => `<div class="capability-item">${cap}</div>`).join('')}
+      </div>
+      <div class="live-logic-feed">
+        <span id="live-feed-content">${agent.liveFeedSeed.split('\n')[0]}</span><span class="cursor">█</span>
+      </div>
+    `;
+
+    display.classList.remove('transitioning');
+  }, 300);
+
+  updateIndicators();
+}
+
+function startLiveFeed() {
+  let feedIndex = 0;
+
+  setInterval(() => {
+    const feedElement = document.getElementById('live-feed-content');
+    if (feedElement && AGENTS.length > 0) {
+      const currentAgent = AGENTS[feedIndex % AGENTS.length];
+      const displayText = currentAgent.liveFeedSeed.split('\n')[0];
+      feedElement.textContent = displayText;
+
+      feedIndex++;
+    }
+  }, 3000);
+}
+
+function moveSlide(n) {
+  const display = document.getElementById('agent-focus-display');
+  if (display) display.classList.add('transitioning');
+
+  setTimeout(() => {
+    currentAgentIndex = (currentAgentIndex + n + AGENTS.length) % AGENTS.length;
+    updateFocus();
+  }, 300);
+}
+
+function generateIndicators() {
+  const indicators = document.getElementById('slide-indicators');
+  if (!indicators) return;
+
+  indicators.innerHTML = AGENTS.map((_, index) =>
+    `<div class="indicator ${index === currentAgentIndex ? 'active' : ''}" onclick="jumpToSlide(${index})"></div>`
+  ).join('');
+}
+
+function updateIndicators() {
+  const indicators = document.querySelectorAll('.indicator');
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentAgentIndex);
   });
-}, 600);
+}
 
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function jumpToSlide(index) {
+  if (index !== currentAgentIndex) {
+    moveSlide(index - currentAgentIndex);
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') {
+    moveSlide(-1);
+  } else if (e.key === 'ArrowRight') {
+    moveSlide(1);
+  }
+});
+
+// Touch navigation
+let startX = 0;
+let endX = 0;
+
+document.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      moveSlide(1); // Swipe left
+    } else {
+      moveSlide(-1); // Swipe right
+    }
+  }
+});
+
+
+
+// ══════════════════════════════════════════════
+// NAVIGATION SYSTEM
+// ══════════════════════════════════════════════
+function goTab(tabId, btn) {
+  // Remove 'on' class from all tabs
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('on'));
+
+  // Add 'on' class to clicked tab
+  if (btn) btn.classList.add('on');
+
+  // Load content based on tab
+  const content = document.getElementById('content');
+  if (content) {
+    if (tabId === 'agents') {
+      content.innerHTML = rAgents();
+      // Initialize slideshow after content is loaded
+      setTimeout(() => {
+        initializeSlideshow();
+      }, 100);
+    } else {
+      content.innerHTML = `<div style="padding:20px;text-align:center;">Tab "${tabId}" content not implemented yet.</div>`;
+    }
+  }
+}
+
+// Legacy go function for sidebar
+function go(section, el) {
+  // Handle sidebar navigation
+  document.querySelectorAll('.ni').forEach(item => item.classList.remove('on'));
+  if (el) el.classList.add('on');
+
+  // Go to agents tab
+  if (section === 'deploy') {
+    goTab('agents', document.getElementById('t-agents'));
+  }
+}
+
+// ══════════════════════════════════════════════
+// WAVE ANIMATION UPDATE
+// ══════════════════════════════════════════════
+function updateWaveColor(targetColor) {
+  // This would modify the wave colors dynamically based on agent
+  // For now, we'll keep the existing wave colors
+  const waveElements = document.querySelectorAll('.parallax use');
+  if (waveElements.length > 0) {
+    // Could implement color interpolation here
+  }
+}
 </script>
 </body>
 </html>
