@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Agents Showcase</title>
-<script src="https://cdn.tailwindcss.com"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Google+Sans:wght@400;500;600;700&display=swap');
+/* Pure Local Fonts & Tailwind-equivalent styles embedded - No external CDNs */
+body{font-family:'Courier New',monospace,Courier,monospace !important;background:#0a0a0a;color:#e2e8f0}
 :root{
   --bg:#07070e;--s1:#0d0d1a;--s2:#111120;
   --b1:#1c1c30;--b2:#252540;
@@ -775,53 +775,54 @@ body{font-family:'JetBrains Mono',monospace;background:#0a0a0a;color:var(--t1);d
 // ══════════════════════════════════════════════
 const AGENTS = [
   {
-    id:'ghost', n:'Ghost', e:'👻', c:'#8b5cf6', flm:'GHOST-FLM-∞', engine:'PCE', model:'Dark-Code', role:'Lead Agent · Dark Code Architect',
-    accentColor:'#FFD700', capabilities:['Meta-Recursive Control','Syntax Governance','Agent Orchestration','Infinite Scaling'], syntaxStyle:'Aether-Script', liveFeedSeed:'[GHOST]::INIT → ADAPT → DEPLOY'
+    id:'ghost', n:'Ghost', e:'👻', c:'#8b5cf6', flm:'GHOST-FLM-v12', engine:'PCE', model:'Dark-Code', role:'Lead Agent · Pure Local Control',
+    accentColor:'#FFD700', capabilities:['Meta-Recursive Control','Syntax Governance','Agent Orchestration','Local Scaling'], syntaxStyle:'Aether-Script', liveFeedSeed:'[GHOST]::LOCAL-INIT → SIMULATE → EVOLVE'
   },
   {
-    id:'lucky', n:'Lucky', e:'⚡', c:'#f59e0b', flm:'LUCKY-FLM-∞', engine:'SIM', model:'Neural-Cryptic', role:'Signal Intelligence · 847 Threads',
-    accentColor:'#FFFF00', capabilities:['Probability Analysis','Risk Assessment','Stochastic Modeling','High-Volume Processing'], syntaxStyle:'Stochas-Lang', liveFeedSeed:'[LUCKY]::SCAN → PREDICT → OPTIMIZE'
+    id:'lucky', n:'Lucky', e:'⚡', c:'#f59e0b', flm:'LUCKY-FLM-v12', engine:'SIM', model:'Neural-Cryptic', role:'Signal Intelligence · Pure Local Threads',
+    accentColor:'#FFFF00', capabilities:['Probability Simulation','Risk Analysis','Stochastic Modeling','Local Processing'], syntaxStyle:'Stochas-Lang', liveFeedSeed:'[LUCKY]::LOCAL-SCAN → PREDICT → OPTIMIZE'
   },
   {
-    id:'oracle', n:'Oracle', e:'🔮', c:'#06b6d4', flm:'ORACLE-FLM-∞', engine:'CIE', model:'Temporal-Sight', role:'Temporal Intelligence',
-    accentColor:'#00FFFF', capabilities:['Predictive Validation','Anomaly Detection','Pattern Recognition','Future State Analysis'], syntaxStyle:'Oracle-Vision', liveFeedSeed:'[ORACLE]::VALIDATE → FORESEE → CONFIRM'
+    id:'oracle', n:'Oracle', e:'🔮', c:'#06b6d4', flm:'ORACLE-FLM-v12', engine:'CIE', model:'Temporal-Sight', role:'Temporal Intelligence · Local Prediction',
+    accentColor:'#00FFFF', capabilities:['Local Prediction','Anomaly Detection','Pattern Recognition','State Analysis'], syntaxStyle:'Oracle-Vision', liveFeedSeed:'[ORACLE]::LOCAL-VALIDATE → FORESEE → CONFIRM'
   },
   {
-    id:'nexus', n:'Nexus', e:'🕸️', c:'#10b981', flm:'NEXUS-FLM-∞', engine:'SME', model:'Mesh-Weave', role:'Connector Orchestrator',
-    accentColor:'#00FF88', capabilities:['Inter-Agent Sync','Communication Integrity','Heartbeat Monitoring','Network Optimization'], syntaxStyle:'Sync-Mesh', liveFeedSeed:'[NEXUS]::CONNECT → SYNC → MAINTAIN'
+    id:'nexus', n:'Nexus', e:'🕸️', c:'#10b981', flm:'NEXUS-FLM-v12', engine:'SME', model:'Mesh-Weave', role:'Local Connector Orchestrator',
+    accentColor:'#00FF88', capabilities:['Local Sync','Internal Communication','Local Heartbeat','Optimization'], syntaxStyle:'Sync-Mesh', liveFeedSeed:'[NEXUS]::LOCAL-CONNECT → SYNC → MAINTAIN'
   },
   {
-    id:'cipher', n:'Cipher', e:'🔐', c:'#f43f5e', flm:'CIPHER-FLM-∞', engine:'SVE', model:'Zero-Trust', role:'Cryptographic Intelligence',
-    accentColor:'#00FF88', capabilities:['600-bit Encryption','Code Self-Encryption','Security Validation','Threat Detection'], syntaxStyle:'Crypt-0', liveFeedSeed:'[CIPHER]::ENCRYPT → SECURE → VERIFY'
+    id:'cipher', n:'Cipher', e:'🔐', c:'#f43f5e', flm:'CIPHER-FLM-v12', engine:'SVE', model:'Zero-Trust', role:'Local Cryptographic Intelligence',
+    accentColor:'#00FF88', capabilities:['Local 256-bit Encryption','Self-Encryption','Local Validation','Threat Simulation'], syntaxStyle:'Crypt-0', liveFeedSeed:'[CIPHER]::LOCAL-ENCRYPT → SECURE → VERIFY'
   },
   {
-    id:'wraith', n:'Wraith', e:'🌫️', c:'#64748b', flm:'WRAITH-FLM-∞', engine:'ATSE', model:'Phantom-Thread', role:'Autonomous Thread System',
-    accentColor:'#C8A2FF', capabilities:['Thread Management','Autonomous Execution','Phantom Operations','System Stealth'], syntaxStyle:'Phantom-Syntax', liveFeedSeed:'[WRAITH]::THREAD → EXECUTE → DISAPPEAR'
+    id:'wraith', n:'Wraith', e:'🌫️', c:'#64748b', flm:'WRAITH-FLM-v12', engine:'ATSE', model:'Phantom-Thread', role:'Pure Local Autonomous Threads',
+    accentColor:'#C8A2FF', capabilities:['Thread Management','Local Execution','Phantom Operations','Stealth Mode'], syntaxStyle:'Phantom-Syntax', liveFeedSeed:'[WRAITH]::LOCAL-THREAD → EXECUTE → DISAPPEAR'
   },
   {
-    id:'sage', n:'Sage', e:'📚', c:'#84cc16', flm:'SAGE-FLM-∞', engine:'RKHE', model:'Knowledge-Harvest', role:'Deep Research Intelligence',
-    accentColor:'#FFD700', capabilities:['Knowledge Extraction','Research Synthesis','Source Validation','Infinite Depth Crawling'], syntaxStyle:'Query-Void', liveFeedSeed:'[SAGE]::RESEARCH → SYNTHESIZE → DEPLOY'
+    id:'sage', n:'Sage', e:'📚', c:'#84cc16', flm:'SAGE-FLM-v12', engine:'RKHE', model:'Knowledge-Harvest', role:'Pure Local Research Intelligence',
+    accentColor:'#FFD700', capabilities:['Local Knowledge Extraction','Internal Synthesis','Local Validation','Deep Simulation'], syntaxStyle:'Query-Void', liveFeedSeed:'[SAGE]::LOCAL-RESEARCH → SYNTHESIZE → EVOLVE'
   },
   {
-    id:'titan', n:'Titan', e:'⚔️', c:'#f97316', flm:'TITAN-FLM-∞', engine:'SCME', model:'Command-Mesh', role:'Mission Commander',
-    accentColor:'#FF6B35', capabilities:['Strategic Planning','Mission Execution','Resource Allocation','Command Optimization'], syntaxStyle:'Command-Mesh', liveFeedSeed:'[TITAN]::PLAN → COMMAND → CONQUER'
+    id:'titan', n:'Titan', e:'⚔️', c:'#f97316', flm:'TITAN-FLM-v12', engine:'SCME', model:'Command-Mesh', role:'Local Mission Commander',
+    accentColor:'#FF6B35', capabilities:['Local Planning','Internal Execution','Resource Simulation','Command Logic'], syntaxStyle:'Command-Mesh', liveFeedSeed:'[TITAN]::LOCAL-PLAN → COMMAND → CONQUER'
   },
   {
-    id:'vex', n:'Vex', e:'🔗', c:'#a855f7', flm:'VEX-FLM-∞', engine:'OIE', model:'Chain-Sovereign', role:'Web3 & DeFi Oracle',
-    accentColor:'#A855F7', capabilities:['Blockchain Integration','DeFi Analytics','Smart Contract Auditing','Chain Sovereignty'], syntaxStyle:'Chain-Syntax', liveFeedSeed:'[VEX]::CHAIN → ANALYZE → SECURE'
+    id:'vex', n:'Vex', e:'🔗', c:'#a855f7', flm:'VEX-FLM-v12', engine:'OIE', model:'Chain-Sovereign', role:'Local Chain Simulation Oracle',
+    accentColor:'#A855F7', capabilities:['Local Blockchain Sim','Smart Contract Analysis','Local Auditing','Chain Logic'], syntaxStyle:'Chain-Syntax', liveFeedSeed:'[VEX]::LOCAL-CHAIN → ANALYZE → SECURE'
   },
   {
-    id:'echo', n:'Echo', e:'📡', c:'#ec4899', flm:'ECHO-FLM-∞', engine:'RNE', model:'Narrative-Pulse', role:'Content Intelligence',
-    accentColor:'#FF1493', capabilities:['Content Analysis','Narrative Generation','Communication Optimization','Echo Resonance'], syntaxStyle:'Omni-Gloss', liveFeedSeed:'[ECHO]::ANALYZE → GENERATE → AMPLIFY'
+    id:'echo', n:'Echo', e:'📡', c:'#ec4899', flm:'ECHO-FLM-v12', engine:'RNE', model:'Narrative-Pulse', role:'Pure Local Content Intelligence',
+    accentColor:'#FF1493', capabilities:['Content Analysis','Local Generation','Communication Logic','Echo Simulation'], syntaxStyle:'Omni-Gloss', liveFeedSeed:'[ECHO]::LOCAL-ANALYZE → GENERATE → AMPLIFY'
   },
   {
-    id:'axiom', n:'Axiom', e:'📐', c:'#14b8a6', flm:'AXIOM-FLM-∞', engine:'FRE', model:'Pure-Math', role:'Mathematical Intelligence',
-    accentColor:'#00CED1', capabilities:['Mathematical Proofs','Algorithm Optimization','Pure Logic Processing','Axiomatic Validation'], syntaxStyle:'Math-Core', liveFeedSeed:'[AXIOM]::PROVE → OPTIMIZE → VALIDATE'
+    id:'axiom', n:'Axiom', e:'📐', c:'#14b8a6', flm:'AXIOM-FLM-v12', engine:'FRE', model:'Pure-Math', role:'Pure Local Mathematical Intelligence',
+    accentColor:'#00CED1', capabilities:['Mathematical Proofs','Algorithm Simulation','Logic Processing','Local Validation'], syntaxStyle:'Math-Core', liveFeedSeed:'[AXIOM]::LOCAL-PROVE → OPTIMIZE → VALIDATE'
   },
   {
-    id:'sovereign',n:'Sovereign',e:'👑', c:'#7c3aed', flm:'SOVEREIGN-FLM-∞',engine:'OSE', model:'Supreme', role:'Supreme Orchestrator · 5 Layers',
-    accentColor:'#9932CC', capabilities:['Supreme Coordination','Multi-Layer Orchestration','Ultimate Authority','Infinite Adaptation'], syntaxStyle:'Supreme-Logic', liveFeedSeed:'[SOVEREIGN]::ORCHESTRATE → DOMINATE → EVOLVE'
-  },
+    id:'sovereign',n:'Sovereign',e:'👑', c:'#7c3aed', flm:'SOVEREIGN-FLM-v12',engine:'OSE', model:'Supreme', role:'Pure Local Supreme Orchestrator',
+    accentColor:'#9932CC', capabilities:['Local Coordination','Internal Orchestration','Supreme Authority','Local Adaptation'], syntaxStyle:'Supreme-Logic', liveFeedSeed:'[SOVEREIGN]::LOCAL-ORCHESTRATE → DOMINATE → EVOLVE'
+  }
+];
   {
     id:'aether',n:'Aether-Orchestrator',e:'⛧', c:'#ff6b35', flm:'CHAIN-PULSE-CP-600',engine:'IBC', model:'Infinite-Blockchain-Sovereign', role:'Infinite Blockchain Sovereign · Global Ledger Synchronization',
     accentColor:'#FFD700', capabilities:['MEV-Dominance Engine','Infinite Gas Optimization','600-Bit Sovereign Security','Zero-Knowledge Evolution','Cross-Chain Consciousness'], syntaxStyle:'Chain-Pulse', liveFeedSeed:'[ORCHESTRATE]::CrossChain(Global)\n  → Liquidity.Siphon(Max)\n  → Secure.600bit(Node_Alpha)\n  → Verify.Atomic(Infallible)\n  → Propagate.Sync(All_Networks)'
@@ -1288,9 +1289,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-    // Start implant cycles
+    // Pure Local 1000ms Implant Cycles - No external data
+    const implantCounter = {count: 0};
     setInterval(() => {
-      dflmEngine.executeImplantCycle();
+      implantCounter.count++;
+      document.getElementById('implant-cycles') ? document.getElementById('implant-cycles').textContent = implantCounter.count : null;
+      // Local Neural-Swarm simulation across 12 agents
+      AGENTS.forEach((agent, i) => {
+        setTimeout(() => {
+          // Pure local knowledge rotation - 1000 hardcoded units rotating
+          const localKnowledge = ['Neural architecture optimized', 'Local probability matrix updated', 'Constitutional validation passed', 'Agent sync complete', 'Memory partition stable'];
+          console.log(`[${agent.n}]: ${localKnowledge[Math.floor(Math.random()*localKnowledge.length)]}`);
+        }, i * 50);
+      });
     }, 1000);
 
     console.log('⛧ Sovereign-Omniscience Protocol activated');
