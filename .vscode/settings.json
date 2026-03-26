@@ -1,0 +1,6 @@
+{
+    "git.addAICoAuthor": "chatAndAgent",
+    "kilo-code.new.browserAutomation.enabled": true,
+    "kilo-code.new.browserAutomation.headless": true,
+    "npm-intellisense.importES6": false
+}
